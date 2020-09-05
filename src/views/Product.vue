@@ -1,6 +1,16 @@
 <template>
   <div class="home">
-    <!--Product title="abc" /-->
+    <div class="container">
+      <Product
+        :id="product.id"
+        :title="product.title"
+        :content="product.content"
+        :origin_price="product.origin_price"
+        :price="product.price"
+        :url="url"
+        @click="getProduct(product)"
+      />
+    </div>
   </div>
 </template>
 
@@ -28,9 +38,11 @@ export default {
           //console.log(response);
           console.log(response.data.data);
           //this.products = JSON.parse(JSON.stringify(response.data.data));
-          this.tempProduct = response.data.data;
-
-          console.log(this.tempProduct);
+          this.product = response.data.data;
+          if (this.product && this.product.imageUrl) {
+            this.url = this.product.imageUrl[0];
+          }
+          console.log(this.product);
         })
         .catch((error) => {
           this.isLoading = false;
@@ -41,9 +53,8 @@ export default {
   data() {
     return {
       isLoading: false,
-      tempProduct: {
-        imageUrl: [],
-      },
+      product: {},
+      url: "",
     };
   },
 };

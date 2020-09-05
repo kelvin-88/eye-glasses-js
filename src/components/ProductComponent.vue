@@ -1,38 +1,32 @@
 <template>
   <div class="card">
-    <img class="card-img img-fluid" :src="url" alt="Vans" />
-    <div class="card-img-overlay d-flex justify-content-end">
-      <a href="#" class="card-link text-danger like">
-        <i class="fas fa-heart"></i>
-      </a>
-    </div>
-    <div class="card-body">
-      <h4 class="card-title">{{ title }}</h4>
-      <h6 class="card-subtitle mb-2 text-muted">Style: VA33TXRJ5</h6>
-      <p class="card-text">
-        {{ content }}
-      </p>
-      <div class="options d-flex flex-fill">
-        <select class="custom-select mr-1">
-          <option selected>Color</option>
-          <option value="1">Green</option>
-          <option value="2">Blue</option>
-          <option value="3">Red</option>
-        </select>
-        <select class="custom-select ml-1">
-          <option selected>Size</option>
-          <option value="1">41</option>
-          <option value="2">42</option>
-          <option value="3">43</option>
-        </select>
-      </div>
-      <div class="buy d-flex justify-content-between align-items-center">
-        <div class="price text-success">
-          <h5 class="mt-4">$125</h5>
+    <div class="row">
+      <div class="col-lg-7">
+        <img class=".card-img-detail img-fluid" :src="url" alt="Vans" />
+        <div class="card-img-overlay d-flex justify-content-end">
+          <a href="#" class="card-link text-danger like">
+            <i class="fas fa-heart"></i>
+          </a>
         </div>
-        <a href="#" class="btn btn-danger mt-3">
-          <i class="fas fa-shopping-cart"></i> Add to Cart
-        </a>
+      </div>
+      <div class="col-lg-5">
+        <h4 class="card-title">{{ title }}</h4>
+        <h6 class="card-subtitle mb-2 text-muted">Style: VA33TXRJ5</h6>
+        <p class="card-text">{{ content }}</p>
+
+        <div class="buy d-flex justify-content-between align-items-center card-footer">
+          <span>
+            <span>
+              <h5 class="mt-4 line-through">{{origin_price}}</h5>
+            </span>
+            <span>
+              <h5 class="mt-4 price">{{price}}</h5>
+            </span>
+          </span>
+          <a href="#" class="btn btn-danger mt-3 align-self-end">
+            <i class="fas fa-shopping-cart"></i> 加入購物車
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -43,8 +37,11 @@ export default {
   props: {
     title: String,
     content: String,
-    url: String
-  }
+    description: String,
+    origin_price: Number,
+    price: Number,
+    url: String,
+  },
 };
 </script>
 
@@ -53,8 +50,16 @@ export default {
   margin-top: 0rem;
 }
 
-.card-img {
+.card-img-detail {
   width: 100%;
-  height: 230px;
+  height: 417px;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.price {
+  color: #ff0000;
 }
 </style>
