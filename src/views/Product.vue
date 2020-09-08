@@ -5,6 +5,7 @@
         :id="product.id"
         :title="product.title"
         :content="product.content"
+        :description="product.description"
         :origin_price="product.origin_price"
         :price="product.price"
         :url="url"
