@@ -54,24 +54,24 @@ export default {
     getProducts(page = 1) {
       this.isLoading = true;
 
-      //let api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/ec/products?page=${page}`;
+      // let api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/ec/products?page=${page}`;
       const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/products?page=${page}`;
 
       this.$http
         .get(api)
         .then((response) => {
           this.isLoading = false;
-          //console.log(response);
+          // console.log(response);
           console.log(response.data.data);
-          //this.products = JSON.parse(JSON.stringify(response.data.data));
+          // this.products = JSON.parse(JSON.stringify(response.data.data));
           this.products = response.data.data;
 
           this.pages.current_page = response.data.meta.pagination.current_page;
           this.pages.total_pages = response.data.meta.pagination.total_pages;
-          //this.pages.total_pages = 5;
+          // this.pages.total_pages = 5;
 
-          //this.pages.current_page = 2;
-          //this.pages.total_pages = 5;
+          // this.pages.current_page = 2;
+          // this.pages.total_pages = 5;
 
           console.log(this.products);
         })

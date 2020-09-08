@@ -17,6 +17,7 @@
 
 <script>
 // @ is an alias to /src
+
 import Product from "@/components/ProductComponent.vue";
 
 export default {
@@ -29,16 +30,15 @@ export default {
   methods: {
     getProduct() {
       this.isLoading = true;
-      //let api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/ec/products?page=${page}`;
+      // let api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/ec/products?page=${page}`;
       const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/product/${this.$route.params.id}`;
-
       this.$http
         .get(api)
         .then((response) => {
           this.isLoading = false;
-          //console.log(response);
+          // console.log(response);
           console.log(response.data.data);
-          //this.products = JSON.parse(JSON.stringify(response.data.data));
+          // this.products = JSON.parse(JSON.stringify(response.data.data));
           this.product = response.data.data;
           if (this.product && this.product.imageUrl) {
             this.url = this.product.imageUrl[0];
@@ -55,7 +55,7 @@ export default {
     return {
       isLoading: false,
       product: {},
-      url: "",
+      url: ",",
     };
   },
 };

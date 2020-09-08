@@ -44,7 +44,9 @@ export default {
     url: String,
   },
   data() {
-    isLoading: false;
+    return {
+      isLoading: false,
+    };
   },
   methods: {
     addToCart() {
@@ -57,7 +59,7 @@ export default {
         .post(api, data)
         .then((response) => {
           this.isLoading = false;
-          //console.log(response);
+          // console.log(response);
           console.log(response.data.data);
         })
         .catch((error) => {
@@ -68,7 +70,6 @@ export default {
   },
 };
 </script>
-
 <style>
 .card {
   margin-top: 0rem;
