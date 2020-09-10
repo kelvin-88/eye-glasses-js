@@ -4,15 +4,9 @@
     <div class="container">
       <Loading :active.sync="isLoading"></Loading>
       <div class="row">
-        <div class="col-lg-4 col-sm-6 mt-3" v-for="product in products" v-bind:key="product.id">
-          <Product
-            @showProduct="showProduct"
-            :id="product.id"
-            :title="product.title"
-            :content="product.content"
-            :url="product.imageUrl[0]"
-            @click="getProduct(product)"
-          />
+        <div class="col-lg-12 mt-3" v-for="item in items" v-bind:key="item.id">
+          {{item}}
+          <Product :item="item" />
         </div>
       </div>
     </div>
@@ -21,20 +15,20 @@
 
 <script>
 // @ is an alias to /src
-import Product from "@/components/ProductsComponent.vue";
+import Product from "@/components/ShoppingCartComponent.vue";
 
 export default {
   components: {
     Product,
   },
   created() {
-    this.getProducts(1);
+    this.getShoppingCart(1);
   },
   data() {
     return {
       isLoading: false,
       title: "",
-      products: [],
+      items: [],
       tempProduct: {
         imageUrl: [],
       },
@@ -47,16 +41,11 @@ export default {
     };
   },
   methods: {
-    showProduct(id) {
-      console.log("received: ", id);
-      // logs: received: 'foo'
-      this.$router.push({ name: "Product", params: { id: id } });
-    },
-    getProducts(page = 1) {
+    getShoppingCart(page = 1) {
       this.isLoading = true;
 
       // let api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/ec/products?page=${page}`;
-      const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/products?page=${page}`;
+      const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping?page=${page}`;
 
       this.$http
         .get(api)
@@ -65,7 +54,7 @@ export default {
           // console.log(response);
           console.log(response.data.data);
           // this.products = JSON.parse(JSON.stringify(response.data.data));
-          this.products = response.data.data;
+          this.items = response.data.data;
 
           this.pages.current_page = response.data.meta.pagination.current_page;
           this.pages.total_pages = response.data.meta.pagination.total_pages;
@@ -74,16 +63,12 @@ export default {
           // this.pages.current_page = 2;
           // this.pages.total_pages = 5;
 
-          console.log(this.products);
+          console.log(this.items);
         })
         .catch((error) => {
           this.isLoading = false;
           console.log(error.response);
         });
-    },
-    getProduct(item) {
-      console.log(item.id);
-      this.$router.push({ name: "product", params: { id: item.id } });
     },
   },
 };

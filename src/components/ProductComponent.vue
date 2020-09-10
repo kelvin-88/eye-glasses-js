@@ -50,6 +50,7 @@ export default {
   },
   methods: {
     addToCart() {
+      this.isLoading = true;
       const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping`;
       const data = {
         product: this.id,
@@ -63,7 +64,7 @@ export default {
           console.log(response.data.data);
         })
         .catch((error) => {
-          console.log(error);
+          console.log(error.response);
           this.isLoading = false;
         });
     },
