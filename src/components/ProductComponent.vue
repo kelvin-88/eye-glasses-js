@@ -62,10 +62,13 @@ export default {
           this.isLoading = false;
           // console.log(response);
           console.log(response.data.data);
+          this.$bus.$emit("update-cart", () => {});
         })
         .catch((error) => {
-          console.log(error.response);
           this.isLoading = false;
+          console.log(error.response);
+          this.$bus.$emit("show-toast", error.reponse);
+          this.$bus.$emit("update-cart", () => {});
         });
     },
   },

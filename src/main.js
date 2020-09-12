@@ -12,11 +12,18 @@ import "vue-loading-overlay/dist/vue-loading.css";
 import 'bootstrap';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
+import $ from 'jquery';
+
 Vue.config.productionTip = false;
 
 Vue.use(VueAxios, axios);
 
 Vue.component("Loading", Loading);
+
+// event bus
+Vue.prototype.$bus = new Vue();
+
+window.$ = $;
 
 new Vue({
   router,

@@ -1,5 +1,26 @@
 <template>
   <div id="app">
+    <loading :active.sync="isLoading"></loading>
+
+    <div
+      class="toast"
+      id="myToast"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      data-delay="2000"
+      style="position: absolute; top: 1rem; right: 1rem;"
+    >
+      <div class="toast-header">
+        <strong class="mr-auto">Bootstrap</strong>
+        <small>11 mins ago</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">Hello, world! This is a toast message.</div>
+    </div>
+
     <div id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">大大眼鏡</a>
       <ul class="navbar-nav mr-auto">
@@ -73,13 +94,13 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <router-link class="nav-link" to="/shoppingcart">
+            <router-link class="nav-link" to="/cart">
               <i class="far fa-heart"></i>
             </router-link>
           </li>
           <li class="nav-item active">
-            <router-link class="nav-link" to="/shoppingcart">
-              <i class="fas fa-shopping-cart"></i>
+            <router-link class="nav-link" to="/cart">
+              <i class="fas fa-shopping-cart">({{cartItems}})</i>
             </router-link>
           </li>
         </ul>
@@ -89,7 +110,52 @@
     <router-view />
   </div>
 </template>
+<script>
+export default {
+  /* global $ */
+  data() {
+    return {
+      cartItems: 0,
+      cartTotal: 0,
+      isLoading: false,
+    };
+  },
+  created() {
+    this.$bus.$on("update-cart", () => {
+      this.updateCart();
+    });
+    this.$bus.$on("show-toast", () => {
+      $("#myToast").toast({ delay: 2000 });
+      $("#myToast").toast("show");
+    });
+  },
+  methods: {
+    updateCart() {
+      this.isLoading = true;
+      const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping`;
+      console.log(url);
 
+      this.$http
+        .get(url)
+        .then((response) => {
+          const items = response.data.data;
+          console.log("updateCart", items);
+          this.cartItems = 0;
+          this.cartTotal = 0;
+          items.forEach((item) => {
+            this.cartItems += item.quantity;
+            this.cartTotal += item.product.price * item.quantity;
+          });
+          this.isLoading = false;
+        })
+        .catch((error) => {
+          this.isLoading = false;
+          console.log(error.response);
+        });
+    },
+  },
+};
+</script>
 <style lang="scss">
 //@import "./assets/styles/custom.scss";
 //@import "../node_modules/bootstrap/scss/bootstrap.scss";

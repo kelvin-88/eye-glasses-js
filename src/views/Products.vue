@@ -84,10 +84,10 @@ export default {
       this.isLoading = true;
 
       // let api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/ec/products?page=${page}`;
-      const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/products?page=${page}`;
+      const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/products?page=${page}`;
 
       this.$http
-        .get(api)
+        .get(url)
         .then((response) => {
           this.isLoading = false;
           // console.log(response);
