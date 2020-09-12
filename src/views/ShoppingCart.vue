@@ -5,7 +5,6 @@
       <Loading :active.sync="isLoading"></Loading>
       <div class="row">
         <div class="col-lg-12 mt-3" v-for="item in items" v-bind:key="item.id">
-          {{item}}
           <Product :item="item" />
         </div>
       </div>

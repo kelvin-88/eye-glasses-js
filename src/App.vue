@@ -1,75 +1,89 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarColor03"
-        aria-controls="navbarColor03"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarColor03">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">
-              Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              data-toggle="dropdown"
-              href="#"
-              role="button"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >Dropdown</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Separated link</a>
-            </div>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" />
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
-
-    <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>
-    </div>
-
     <div id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">大大眼鏡</a>
       <ul class="navbar-nav mr-auto">
         <div class="collapse navbar-collapse" id="navbarColor03">
-          <router-link class="nav-item active" to="/">Home</router-link>|
-          <router-link class="nav-item active" to="/products">Products</router-link>|
-          <router-link class="nav-item active" to="/about">About</router-link>
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/">回首頁</router-link>
+          </li>
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/products">眼鏡</router-link>
+          </li>
+          <li v-if="false" class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >物料</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="nav-item active">
+                <router-link
+                  class="nav-link"
+                  :to="{ name: 'Products', params: { material: '所有物料' }}"
+                >所有物料</router-link>
+              </li>
+              <li class="nav-item active">
+                <router-link
+                  class="nav-link"
+                  :to="{ name: 'Products', params: { material: '樹脂' }}"
+                >樹脂</router-link>
+              </li>
+              <li class="nav-item active">
+                <router-link
+                  class="nav-link"
+                  :to="{ name: 'Products', params: { material: '塑膠' }}"
+                >塑膠</router-link>
+              </li>
+              <li class="nav-item active">
+                <router-link
+                  class="nav-link"
+                  :to="{ name: 'Products', params: { material: '金屬' }}"
+                >金屬</router-link>
+              </li>
+              <li class="nav-item active">
+                <router-link
+                  class="nav-link"
+                  :to="{ path: 'Products', query: { material: '樹脂' }}"
+                >樹脂</router-link>
+              </li>
+              <li class="nav-item active">
+                <router-link
+                  class="nav-link"
+                  :to="{ path: 'Products', query: { material: '塑膠' }}"
+                >塑膠</router-link>
+              </li>
+              <li class="nav-item active">
+                <router-link
+                  class="nav-link"
+                  :to="{ path: 'Products', query: { material: '金屬' }}"
+                >金屬</router-link>
+              </li>
+            </div>
+          </li>
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/about">關于我們</router-link>
+          </li>
         </div>
       </ul>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/shoppingcart">
+              <i class="far fa-heart"></i>
+            </router-link>
+          </li>
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/shoppingcart">
+              <i class="fas fa-shopping-cart"></i>
+            </router-link>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <router-view />

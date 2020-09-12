@@ -3,13 +3,13 @@
     <div class="col-3">
       <img class="card-img img-fluid" :src="item.product.imageUrl[0]" />
     </div>
-    <div class="col-3">
-      <p class="card-text">{{item.product.title}}</p>
+    <div class="col-1">
+      <p class="card-title">{{item.product.category}}</p>
     </div>
     <div class="col-3">
-      <h4 class="card-title">{{item.product.category}}</h4>
+      <h4 class="card-text">{{item.product.title}}</h4>
     </div>
-    <div class="col-3">
+    <div class="col-2">
       <td class="align-middle">
         <div class="input-group">
           <div class="input-group-prepend">
@@ -34,6 +34,9 @@
               :disabled="item.quantity === 1"
             >-</button>
           </div>
+          <button>
+            <i class="fas fa-trash-alt"></i>
+          </button>
         </div>
       </td>
     </div>
@@ -72,7 +75,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .card {
   margin-top: 0rem;
 }
