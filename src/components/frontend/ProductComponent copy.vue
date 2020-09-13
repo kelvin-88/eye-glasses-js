@@ -2,7 +2,7 @@
   <div class="card">
     <div class="row">
       <div class="col-lg-7">
-        <img class=".card-img-detail img-fluid" :src="url" alt="Vans" />
+        <img class=".card-img-detail img-fluid" :src="url" />
         <div class="card-img-overlay d-flex justify-content-end">
           <a href="#" class="card-link text-danger like">
             <i class="fas fa-heart"></i>

@@ -6,7 +6,6 @@
           <img
             class="card-img"
             src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png"
-            alt="Vans"
           />
           <div class="card-img-overlay d-flex justify-content-end">
             <a href="#" class="card-link text-danger like">

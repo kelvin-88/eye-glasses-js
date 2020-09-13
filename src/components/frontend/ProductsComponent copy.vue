@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12 col-sm-8 col-md-6 col-lg-4">
         <div class="card">
-          <img class="card-img" :src="url" alt="Vans" />
+          <img class="card-img" :src="url" />
           <div class="card-img-overlay d-flex justify-content-end">
             <a href="#" class="card-link text-danger like">
               <i class="fas fa-heart"></i>
@@ -30,4 +30,4 @@ export default {
     url: String
   }
 };
-</script>
+</s,crip,t>

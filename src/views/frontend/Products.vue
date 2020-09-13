@@ -26,7 +26,7 @@
 
 <script>
 // @ is an alias to /src
-import Product from "@/components/ProductsComponent.vue";
+import Product from "@/components/frontend/ProductsComponent.vue";
 
 export default {
   components: {
@@ -78,7 +78,8 @@ export default {
     showProduct(id) {
       console.log("received: ", id);
       // logs: received: 'foo'
-      this.$router.push({ name: "Product", params: { id: id } });
+      // this.$router.push({ name: "Product", params: { id: id } });
+      this.$router.push({ path: `/product/${id}` });
     },
     getProducts(page = 1) {
       this.isLoading = true;

@@ -1,10 +1,10 @@
 <template>
   <div class="card" @click="showProduct">
-    <img class="card-img img-fluid" :src="url" alt="Vans" />
+    <img class="card-img img-fluid" :src="url" />
 
     <div class="card-img-overlay d-flex justify-content-end">
       <a href="#" class="card-link text-danger like">
-        <i class="fas fa-heart"></i>
+        <i class="far fa-heart"></i>
       </a>
     </div>
     <div class="card-body">
@@ -28,16 +28,16 @@ export default {
     showProduct() {
       // See the callback in the child comp reference
       // in the parent comp
-      //this.$emit("askParentToDoStuff", id);
-      //console.log("showProduct1");
+      // this.$emit("askParentToDoStuff", id);
+      // console.log("showProduct1");
       this.$emit("showProduct", this.id);
-      //this.$router.push({ name: "product", params: { id: this.id } });
+      // this.$router.push({ name: "product", params: { id: this.id } });
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
 .card {
   margin-top: 0rem;
 }

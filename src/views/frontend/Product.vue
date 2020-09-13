@@ -1,16 +1,8 @@
 <template>
   <div class="home">
     <div class="container">
-      <Product
-        :id="product.id"
-        :title="product.title"
-        :content="product.content"
-        :description="product.description"
-        :origin_price="product.origin_price"
-        :price="product.price"
-        :url="url"
-        @click="getProduct(product)"
-      />
+      <Loading :active.sync="isLoading"></Loading>
+      <Product :product="product" :imageUrl="url" />
     </div>
   </div>
 </template>
@@ -18,7 +10,7 @@
 <script>
 // @ is an alias to /src
 
-import Product from "@/components/ProductComponent.vue";
+import Product from "@/components/frontend/ProductComponent.vue";
 
 export default {
   components: {

@@ -2,25 +2,6 @@
   <div id="app">
     <loading :active.sync="isLoading"></loading>
 
-    <div
-      class="toast"
-      id="myToast"
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-      data-delay="2000"
-      style="position: absolute; top: 1rem; right: 1rem;"
-    >
-      <div class="toast-header">
-        <strong class="mr-auto">Bootstrap</strong>
-        <small>11 mins ago</small>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="toast-body">Hello, world! This is a toast message.</div>
-    </div>
-
     <div id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">大大眼鏡</a>
       <ul class="navbar-nav mr-auto">
@@ -112,7 +93,6 @@
 </template>
 <script>
 export default {
-  /* global $ */
   data() {
     return {
       cartItems: 0,
@@ -121,12 +101,15 @@ export default {
     };
   },
   created() {
+    // this.updateCart();
     this.$bus.$on("update-cart", () => {
       this.updateCart();
     });
-    this.$bus.$on("show-toast", () => {
-      $("#myToast").toast({ delay: 2000 });
-      $("#myToast").toast("show");
+    this.$bus.$on("show-toast", (msg) => {
+      this.$toast.error(msg, {
+        timeout: 3000,
+        hideProgressBar: true,
+      });
     });
   },
   methods: {
