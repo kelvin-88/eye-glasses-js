@@ -8,9 +8,9 @@
       </a>
     </div>
     <div class="card-body">
-      <h4 class="card-title">{{ title }}</h4>
-      <h6 class="card-subtitle mb-2 text-muted">Style: VA33TXRJ5</h6>
-      <p class="card-text">{{ content }}</p>
+      <h4 class="card-title">{{ product.title }}</h4>
+      <h6 v-if="false" class="card-subtitle mb-2 text-muted">Style: VA33TXRJ5</h6>
+      <p class="card-text">{{ product.content }}</p>
     </div>
   </div>
 </template>
@@ -18,10 +18,11 @@
 <script>
 export default {
   props: {
-    id: String,
-    title: String,
-    content: String,
-    description: String,
+    product: Object,
+    // id: String,
+    // title: String,
+    // content: String,
+    // description: String,
     url: String,
   },
   methods: {
@@ -30,7 +31,7 @@ export default {
       // in the parent comp
       // this.$emit("askParentToDoStuff", id);
       // console.log("showProduct1");
-      this.$emit("showProduct", this.id);
+      this.$emit("showProduct", this.product.id);
       // this.$router.push({ name: "product", params: { id: this.id } });
     },
   },

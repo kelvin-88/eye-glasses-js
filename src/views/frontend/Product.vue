@@ -2,7 +2,7 @@
   <div class="home">
     <div class="container">
       <Loading :active.sync="isLoading"></Loading>
-      <Product :product="product" :imageUrl="url" />
+      <Product :product="product" />
     </div>
   </div>
 </template>

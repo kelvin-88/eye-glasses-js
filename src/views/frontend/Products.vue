@@ -12,9 +12,7 @@
         <div class="col-lg-4 col-sm-6 mt-3" v-for="product in tempProducts" v-bind:key="product.id">
           <Product
             @showProduct="showProduct"
-            :id="product.id"
-            :title="product.title"
-            :content="product.content"
+            :product="product"
             :url="product.imageUrl[0]"
             @click="getProduct(product)"
           />
@@ -76,7 +74,7 @@ export default {
       }
     },
     showProduct(id) {
-      console.log("received: ", id);
+      console.log("showProduct received: ", id);
       // logs: received: 'foo'
       // this.$router.push({ name: "Product", params: { id: id } });
       this.$router.push({ path: `/product/${id}` });

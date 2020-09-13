@@ -1,9 +1,9 @@
 <template>
-  <div class="card">
+  <div class="card" @click="showProduct">
     <Loading :active.sync="isLoading"></Loading>
     <div v-if="product.title" class="row">
       <div class="col-lg-7">
-        <img class="card-img-detail" :src="imageUrl" />
+        <img class="card-img-detail" :src="product.imageUrl[0]" />
         <div class="card-img-overlay d-flex justify-content-end">
           <a href="#" class="card-link text-danger like">
             <i class="far fa-heart"></i>
@@ -40,7 +40,6 @@
 export default {
   props: {
     product: Object,
-    imageUrl: String,
 
     // id: String,
     // title: String,
@@ -56,6 +55,14 @@ export default {
     };
   },
   methods: {
+    showProduct() {
+      // See the callback in the child comp reference
+      // in the parent comp
+      // this.$emit("askParentToDoStuff", id);
+      // console.log("showProduct1");
+      this.$emit("showProduct", this.product.id);
+      // this.$router.push({ name: "product", params: { id: this.id } });
+    },
     addToCart() {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping`;

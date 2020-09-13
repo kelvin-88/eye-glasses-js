@@ -3,12 +3,7 @@
     <Loading :active.sync="isLoading"></Loading>
     <div class="row">
       <div class="col-lg-12 mt-3" v-for="item in items" v-bind:key="item.id">
-        <Product
-          @updateCart="updateCart"
-          @updating="updating"
-          @deleteCart="deleteCart"
-          :item="item"
-        />
+        <Cart @updateCart="updateCart" @updating="updating" @deleteCart="deleteCart" :item="item" />
       </div>
     </div>
 
@@ -19,7 +14,8 @@
           v-bind:key="product.id"
           :class="{'carousel-item':true, 'active':(firstTempProduct == product)}"
         >
-          <img class="d-block w-100" :src="product.imageUrl[0]" :alt="product.id" />
+          <!--img class="d-block w-100" :src="product.imageUrl[0]" :alt="product.id" /-->
+          <Product @showProduct="showProduct" :product="product" :url="product.imageUrl[0]" />
         </div>
       </div>
       <a
@@ -77,11 +73,13 @@
 
 <script>
 // @ is an alias to /src
-import Product from "@/components/frontend/CartComponent.vue";
+import Cart from "@/components/frontend/CartComponent.vue";
+import Product from "@/components/frontend/ProductComponent.vue";
 
 export default {
   /* global $ */
   components: {
+    Cart,
     Product,
   },
   created() {
@@ -109,6 +107,13 @@ export default {
     };
   },
   methods: {
+    showProduct(id) {
+      console.log("showProduct received: ", id);
+      // logs: received: 'foo'
+      // this.$router.push({ name: "Product", params: { id: id } });
+      this.$router.push({ path: `/product/${id}` });
+    },
+
     delProduct() {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping/${this.tempProduct.product.id}`;
