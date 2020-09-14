@@ -7,6 +7,8 @@
       </div>
     </div>
 
+    <h2 class="mt-4" style="text-align: center!important;">暢銷產品</h2>
+
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div
@@ -15,7 +17,12 @@
           :class="{'carousel-item':true, 'active':(firstTempProduct == product)}"
         >
           <!--img class="d-block w-100" :src="product.imageUrl[0]" :alt="product.id" /-->
-          <Product @showProduct="showProduct" :product="product" :url="product.imageUrl[0]" />
+          <Product
+            @showProduct="showProduct"
+            :product="product"
+            :showShoppingCart="false"
+            :url="product.imageUrl[0]"
+          />
         </div>
       </div>
       <a
@@ -233,5 +240,10 @@ export default {
   min-height: 300px;
   max-height: 400px;
   object-fit: cover;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  filter: invert(100%);
 }
 </style>

@@ -5,10 +5,10 @@
     <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading">
-          簡約設計
-          <span class="text-muted">眼鏡工藝</span>
+          專業驗眼服務
+          <span class="text-muted">守護眼睛健康</span>
         </h2>
-        <p class="lead">德國眼鏡品牌 LUTAS 深信經過努力, 加上尖端的科技, 破傳統精益求精.</p>
+        <p class="lead">驗光師有多年執業經驗, 提供優質和專業的護眼服務</p>
       </div>
       <div class="col-md-5">
         <img

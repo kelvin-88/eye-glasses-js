@@ -2,7 +2,7 @@
   <div class="card" @click="showProduct">
     <img class="card-img img-fluid" :src="url" />
 
-    <div class="card-img-overlay d-flex justify-content-end">
+    <div v-if="false" class="card-img-overlay d-flex justify-content-end">
       <a href="#" class="card-link text-danger like">
         <i class="far fa-heart"></i>
       </a>

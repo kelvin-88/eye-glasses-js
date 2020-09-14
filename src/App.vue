@@ -74,7 +74,7 @@
       </ul>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li v-if="false" class="nav-item active">
             <router-link class="nav-link" to="/cart">
               <i class="far fa-heart"></i>
             </router-link>
@@ -89,6 +89,12 @@
     </div>
 
     <router-view />
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">&copy;2020 大大眼鏡</span>
+        <p></p>
+      </div>
+    </footer>
   </div>
 </template>
 <script>
@@ -101,7 +107,7 @@ export default {
     };
   },
   created() {
-    // this.updateCart();
+    this.updateCart();
     this.$bus.$on("update-cart", () => {
       this.updateCart();
     });
@@ -146,6 +152,7 @@ export default {
 //@import "bootstrap";
 
 @import "./assets/main";
+@import url("https://fonts.googleapis.com/css?family=Proza+Libre");
 
 // #app {
 //   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -167,4 +174,18 @@ export default {
 //     }
 //   }
 // }
+.navbar-brand {
+  font-family: "Proza Libre", sans-serif;
+  color: seagreen;
+  font-weight: 800;
+  font-size: 200%;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: gray;
+  text-align: center;
+}
 </style>

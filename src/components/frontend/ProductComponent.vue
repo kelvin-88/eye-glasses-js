@@ -4,7 +4,7 @@
     <div v-if="product.title" class="row">
       <div class="col-lg-7">
         <img class="card-img-detail" :src="product.imageUrl[0]" />
-        <div class="card-img-overlay d-flex justify-content-end">
+        <div v-if="false" class="card-img-overlay d-flex justify-content-end">
           <a href="#" class="card-link text-danger like">
             <i class="far fa-heart"></i>
           </a>
@@ -25,7 +25,7 @@
               <span class="original-price mt-1">${{product.origin_price | toThousandSeperator}}</span>
             </div>
           </div>
-          <div class="col-lg-5 mt-2 align-items-end">
+          <div v-if="showShoppingCart" class="col-lg-5 mt-2 align-items-end">
             <a @click="addToCart" class="btn btn-danger">
               <i class="fas fa-shopping-cart"></i> 加入購物車
             </a>
@@ -40,6 +40,7 @@
 export default {
   props: {
     product: Object,
+    showShoppingCart: Boolean,
 
     // id: String,
     // title: String,
