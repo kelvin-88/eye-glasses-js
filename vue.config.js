@@ -1,5 +1,4 @@
 module.exports = {
   publicPath:
-    process.env.NODE_ENV === 'production'
-      ? '/eye-glasses-js/dist/' : '/',
+    process.env.NODE_ENV === 'production' ? '/dist/' : '/',
 };
