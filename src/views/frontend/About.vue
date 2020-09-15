@@ -54,7 +54,7 @@
           電話:
           <p>02-1234-5678</p>
           Email:
-          <p>sales@eyeglasses-taitai.com.tw</p>
+          <p>sales@eyeglasses-daidai.com.tw</p>
         </div>
       </div>
 

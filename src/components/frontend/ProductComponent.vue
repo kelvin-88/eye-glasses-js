@@ -5,12 +5,18 @@
       <div class="col-lg-7">
         <img class="card-img-detail" :src="product.imageUrl[0]" />
         <div class="card-img-overlay d-flex justify-content-end">
-          <a href="#" class="card-link text-danger like">
-            <i class="far fa-heart"></i>
+          <a href="#" class="card-link text-danger like" @click.prevent="updateFavorite(product)">
+            <div v-if="favorite">
+              <i class="fas fa-heart"></i>
+            </div>
+            <div v-else>
+              <i class="far fa-heart"></i>
+            </div>
           </a>
         </div>
       </div>
       <div class="col-lg-5 mt-4">
+        {{favorite}}
         <h4 class="card-title">{{ product.title }}</h4>
         <p></p>
 
@@ -39,7 +45,9 @@
 <script>
 export default {
   props: {
-    product: Object,
+    product: {
+      favorite: false,
+    },
     showShoppingCart: Boolean,
 
     // id: String,
@@ -50,12 +58,70 @@ export default {
     // price: Number,
     // url: String,
   },
+  created() {
+    // this.refreshFavorite();
+    console.log("created", this.product);
+    this.refreshFavorite();
+  },
+  mounted() {
+    console.log("mounted", this.product);
+  },
+  updated() {
+    console.log("updated", this.product);
+    this.refreshFavorite();
+  },
   data() {
     return {
       isLoading: false,
+      favorites: [],
+      favorite: false,
     };
   },
   methods: {
+    refreshFavorite() {
+      console.log("refreshFavorite", this.product);
+      this.favorites = JSON.parse(localStorage.getItem("favorite"));
+      console.log("refreshFavorite", this.favorites);
+      if (this.favorites === null) {
+        this.favorites = [];
+      }
+      if (this.favorites.includes(this.product.id)) {
+        this.favorite = true;
+        // this.$set(product, "favorite", true);
+      } else {
+        this.favorite = false;
+        // this.$set(product, "favorite", false);
+      }
+      console.log("refreshFavorite", this.favorite);
+    },
+    updateFavorite(product) {
+      console.log("updateFavorite", product);
+      if (!this.showShoppingCart) {
+        return;
+      }
+
+      this.favorites = JSON.parse(localStorage.getItem("favorite"));
+      if (this.favorites === null) {
+        this.favorites = [];
+      }
+      console.log("favorites", this.favorites);
+      // this.$set(this.product, "favorite", false);
+
+      if (this.favorite) {
+        // remove favorite
+        if (this.favorites.includes(product.id)) {
+          this.favorites.splice(this.favorites.indexOf("B"), 1);
+          localStorage.setItem("favorite", JSON.stringify(this.favorites));
+        }
+      } else {
+        // add favorite
+        if (!this.favorites.includes(product.id)) {
+          this.favorites.push(product.id);
+          localStorage.setItem("favorite", JSON.stringify(this.favorites));
+        }
+      }
+      this.refreshFavorite();
+    },
     showProduct() {
       // See the callback in the child comp reference
       // in the parent comp
