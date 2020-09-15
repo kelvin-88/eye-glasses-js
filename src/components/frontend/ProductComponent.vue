@@ -91,10 +91,10 @@ export default {
         this.favorite = false;
         // this.$set(product, "favorite", false);
       }
-      console.log("refreshFavorite", this.favorite);
+      // console.log("refreshFavorite", this.favorite);
     },
     updateFavorite(product) {
-      console.log("updateFavorite", product);
+      // console.log("updateFavorite", product);
       if (!this.showShoppingCart) {
         return;
       }
