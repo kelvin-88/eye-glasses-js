@@ -4,7 +4,7 @@
     <div v-if="product.title" class="row">
       <div class="col-lg-7">
         <img class="card-img-detail" :src="product.imageUrl[0]" />
-        <div v-if="false" class="card-img-overlay d-flex justify-content-end">
+        <div class="card-img-overlay d-flex justify-content-end">
           <a href="#" class="card-link text-danger like">
             <i class="far fa-heart"></i>
           </a>
@@ -77,13 +77,14 @@ export default {
           this.isLoading = false;
           // console.log(response);
           console.log(response.data.data);
+          this.$bus.$emit("show-toast-message", "成功加入購物車");
           this.$bus.$emit("update-cart", () => {});
         })
         .catch((error) => {
           this.isLoading = false;
           console.log(error.response);
           console.log(error.response.data.errors[0]);
-          this.$bus.$emit("show-toast", error.response.data.errors[0]);
+          this.$bus.$emit("show-toast-error", error.response.data.errors[0]);
           this.$bus.$emit("update-cart", () => {});
         });
     },

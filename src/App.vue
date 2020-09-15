@@ -111,7 +111,13 @@ export default {
     this.$bus.$on("update-cart", () => {
       this.updateCart();
     });
-    this.$bus.$on("show-toast", (msg) => {
+    this.$bus.$on("show-toast-message", (msg) => {
+      this.$toast(msg, {
+        timeout: 3000,
+        hideProgressBar: true,
+      });
+    });
+    this.$bus.$on("show-toast-error", (msg) => {
       this.$toast.error(msg, {
         timeout: 3000,
         hideProgressBar: true,
