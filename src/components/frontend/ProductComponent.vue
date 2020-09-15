@@ -16,7 +16,6 @@
         </div>
       </div>
       <div class="col-lg-5 mt-4">
-        {{favorite}}
         <h4 class="card-title">{{ product.title }}</h4>
         <p></p>
 
@@ -60,14 +59,14 @@ export default {
   },
   created() {
     // this.refreshFavorite();
-    console.log("created", this.product);
+    // console.log("created", this.product);
     this.refreshFavorite();
   },
   mounted() {
-    console.log("mounted", this.product);
+    // console.log("mounted", this.product);
   },
   updated() {
-    console.log("updated", this.product);
+    // console.log("updated", this.product);
     this.refreshFavorite();
   },
   data() {

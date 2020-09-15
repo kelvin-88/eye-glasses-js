@@ -2,9 +2,14 @@
   <div class="card" @click="showProduct">
     <img class="card-img img-fluid" :src="url" />
 
-    <div v-if="false" class="card-img-overlay d-flex justify-content-end">
-      <a href="#" class="card-link text-danger like">
-        <i class="far fa-heart"></i>
+    <div class="card-img-overlay d-flex justify-content-end">
+      <a href="#" class="card-link text-danger like" @click.prevent>
+        <div v-if="product.favorite">
+          <i class="fas fa-heart"></i>
+        </div>
+        <div v-else>
+          <i class="far fa-heart"></i>
+        </div>
       </a>
     </div>
     <div class="card-body">
@@ -27,6 +32,7 @@ export default {
   },
   methods: {
     showProduct() {
+      console.log("showProduct", this.product);
       // See the callback in the child comp reference
       // in the parent comp
       // this.$emit("askParentToDoStuff", id);

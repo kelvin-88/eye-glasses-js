@@ -2,11 +2,6 @@
   <div class="home">
     <!--Product title="abc" /-->
     <div class="container">
-      <div v-for="material in materials" v-bind:key="material">
-        <input type="checkbox" :value="material" v-model="selectedMaterials" />
-        <label for="material">{{ material }}</label>
-      </div>
-
       <Loading :active.sync="isLoading"></Loading>
       <div class="row">
         <div class="col-lg-4 col-sm-6 mt-3" v-for="product in tempProducts" v-bind:key="product.id">
@@ -50,8 +45,6 @@ export default {
         uuid: "",
       },
       pages: { current_page: 1, total_pages: 0 },
-      materials: ["樹脂", "塑膠", "金屬"],
-      selectedMaterials: [],
     };
   },
   watch: {
@@ -63,6 +56,24 @@ export default {
     },
   },
   methods: {
+    setFavorites(products) {
+      let favorites = JSON.parse(localStorage.getItem("favorite"));
+      console.log("setFavorites", favorites);
+      if (favorites === null) {
+        favorites = [];
+      }
+
+      let product = {};
+      for (product of products) {
+        if (favorites.includes(product.id)) {
+          product.favorite = true;
+        } else {
+          product.favorite = false;
+        }
+      }
+      console.log("setFavorites", products);
+    },
+
     filterProducts() {
       this.tempProducts = [];
       var product;
@@ -78,6 +89,22 @@ export default {
       // logs: received: 'foo'
       // this.$router.push({ name: "Product", params: { id: id } });
       this.$router.push({ path: `/product/${id}` });
+    },
+    getFavorites(products) {
+      let favorites = JSON.parse(localStorage.getItem("favorite"));
+      // console.log("refreshFavorite", favorites);
+      if (favorites === null) {
+        favorites = [];
+      }
+
+      this.tempProducts = [];
+      let product = {};
+      for (product of products) {
+        if (favorites.includes(product.id)) {
+          this.tempProducts.push(product);
+        }
+      }
+      this.setFavorites(products);
     },
     getProducts(page = 1) {
       this.isLoading = true;
@@ -102,7 +129,9 @@ export default {
           // this.pages.total_pages = 5;
 
           console.log(this.products);
-          this.tempProducts = this.products;
+
+          this.getFavorites(this.products);
+          // this.tempProducts = this.products;
         })
         .catch((error) => {
           this.isLoading = false;

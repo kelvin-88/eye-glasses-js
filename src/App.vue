@@ -74,8 +74,8 @@
       </ul>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
-          <li v-if="false" class="nav-item active">
-            <router-link class="nav-link" to="/cart">
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/favorites">
               <i class="far fa-heart"></i>
             </router-link>
           </li>
