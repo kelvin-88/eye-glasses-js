@@ -2,7 +2,7 @@
   <div>
     <div class="row">
       <div class="col-3">
-        <img class="card-img img-fluid" :src="item.product.imageUrl[0]" />
+        <img class="card-img img-fluid" :src="item.product.imageUrl[0]" @click="showProduct(item)" />
       </div>
       <div class="col-1">
         <p class="card-title">{{item.product.category}}</p>
@@ -65,6 +65,15 @@ export default {
     };
   },
   methods: {
+    showProduct(item) {
+      console.log("showProduct", item.product.id);
+      // See the callback in the child comp reference
+      // in the parent comp
+      // this.$emit("askParentToDoStuff", id);
+      // console.log("showProduct1");
+      this.$emit("showProduct", item.product.id);
+      // this.$router.push({ name: "product", params: { id: this.id } });
+    },
     deleteCart(item) {
       this.$emit("deleteCart", item);
       // console.log(item);

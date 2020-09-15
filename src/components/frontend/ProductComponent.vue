@@ -78,9 +78,9 @@ export default {
   },
   methods: {
     refreshFavorite() {
-      console.log("refreshFavorite", this.product);
+      // console.log("refreshFavorite", this.product);
       this.favorites = JSON.parse(localStorage.getItem("favorite"));
-      console.log("refreshFavorite", this.favorites);
+      // console.log("refreshFavorite", this.favorites);
       if (this.favorites === null) {
         this.favorites = [];
       }
