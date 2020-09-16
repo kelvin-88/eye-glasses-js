@@ -11,6 +11,9 @@
         <h4 class="card-text">{{item.product.title}}</h4>
       </div>
       <div class="col-2">
+        <h5 class="card-text">{{item.quantity}} x ${{item.product.price}}</h5>
+      </div>
+      <div class="col-2">
         <td class="align-middle">
           <div class="input-group">
             <div class="input-group-prepend">
