@@ -12,6 +12,18 @@
         />
       </div>
     </div>
+    <div class="row mt-4" v-if="items.length > 0">
+      <div class="col-md-6">
+        <button
+          type="submit"
+          class="btn btn-primary btn-lg"
+          @click.prevent="$router.push('Order')"
+        >確認訂單</button>
+      </div>
+      <h4 class="col-md-5 text-right">總計 ${{ totalAmount | toThousandSeperator}}</h4>
+    </div>
+    <br />
+    <hr />
 
     <h2 class="mt-4" style="text-align: center!important;">暢銷產品</h2>
 
@@ -116,6 +128,7 @@ export default {
         token: "",
         uuid: "",
       },
+      totalAmount: 0,
       pages: { current_page: 1, total_pages: 0 },
     };
   },
@@ -181,6 +194,12 @@ export default {
           // this.pages.total_pages = 5;
 
           console.log(this.items);
+
+          this.totalAmount = 0;
+          let item;
+          for (item of this.items) {
+            this.totalAmount += item.quantity * item.product.price;
+          }
         })
         .catch((error) => {
           this.isLoading = false;

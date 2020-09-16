@@ -34,7 +34,7 @@
         <p class="lead">緊貼面型, 輕巧, 舒適, 堅固，耐用</p>
       </div>
     </div>
-
+    <br />
     <HotProduct />
   </div>
 </template>
