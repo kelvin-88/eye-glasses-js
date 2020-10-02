@@ -1,0 +1,36 @@
+// Override / set color variables
+$blue: #3399ff;
+$orange: #f26c22;
+$grey: #d3d3d3;
+$nav-bar-underlin: #fdbe02;
+
+$primary: $blue;
+$secondary: $grey;
+
+// .nav-active {
+//   border-bottom: 0.1rem solid $yellow;
+// }
+.navbar-icons-width {
+  max-width: 150px;
+}
+
+.router-link-exact-active {
+  //your desired design when link is clicked
+  //font-weight: 700;
+  border-bottom: 0.1rem solid $nav-bar-underlin;
+}
+
+.navbar-brand {
+  font-size: xx-large !important;
+}
+
+.nav-item {
+  font-size: 1.6rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+// products
+.item-category {
+  font-size: 1.6rem;
+}

@@ -2,86 +2,42 @@
   <div id="app">
     <loading :active.sync="isLoading"></loading>
 
-    <div id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
+    <div id="nav" class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="#">大大眼鏡</a>
-      <ul class="navbar-nav mr-auto">
-        <div class="collapse navbar-collapse" id="navbarColor03">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#myNavbar,#myNavbarEnd"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="navbar-nav mx-auto">
           <li class="nav-item active">
-            <router-link class="nav-link" to="/">回首頁</router-link>
+            <router-link class="nav-link" to="/">首頁</router-link>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <router-link class="nav-link" to="/products">眼鏡</router-link>
           </li>
-          <li v-if="false" class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >物料</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li class="nav-item active">
-                <router-link
-                  class="nav-link"
-                  :to="{ name: 'Products', params: { material: '所有物料' }}"
-                >所有物料</router-link>
-              </li>
-              <li class="nav-item active">
-                <router-link
-                  class="nav-link"
-                  :to="{ name: 'Products', params: { material: '樹脂' }}"
-                >樹脂</router-link>
-              </li>
-              <li class="nav-item active">
-                <router-link
-                  class="nav-link"
-                  :to="{ name: 'Products', params: { material: '塑膠' }}"
-                >塑膠</router-link>
-              </li>
-              <li class="nav-item active">
-                <router-link
-                  class="nav-link"
-                  :to="{ name: 'Products', params: { material: '金屬' }}"
-                >金屬</router-link>
-              </li>
-              <li class="nav-item active">
-                <router-link
-                  class="nav-link"
-                  :to="{ path: 'Products', query: { material: '樹脂' }}"
-                >樹脂</router-link>
-              </li>
-              <li class="nav-item active">
-                <router-link
-                  class="nav-link"
-                  :to="{ path: 'Products', query: { material: '塑膠' }}"
-                >塑膠</router-link>
-              </li>
-              <li class="nav-item active">
-                <router-link
-                  class="nav-link"
-                  :to="{ path: 'Products', query: { material: '金屬' }}"
-                >金屬</router-link>
-              </li>
-            </div>
-          </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <router-link class="nav-link" to="/about">關于我們</router-link>
           </li>
-        </div>
-      </ul>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
+        </ul>
+      </div>
+      <div
+        class="collapse navbar-collapse justify-content-end navbar-icons-width"
+        id="myNavbarEnd"
+      >
+        <ul class="navbar-nav mx-0">
+          <li class="nav-item">
             <router-link class="nav-link" to="/favorites">
               <i class="far fa-heart"></i>
             </router-link>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <router-link class="nav-link" to="/cart">
-              <i class="fas fa-shopping-cart">({{cartItems}})</i>
+              <i class="fas fa-shopping-cart">({{ cartItems }})</i>
             </router-link>
           </li>
         </ul>

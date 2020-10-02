@@ -1,21 +1,38 @@
 <template>
   <div class="home">
     <!--Product title="abc" /-->
-    <div class="container">
-      <div v-for="material in materials" v-bind:key="material">
-        <input type="checkbox" :value="material" v-model="selectedMaterials" />
-        <label for="material">{{ material }}</label>
-      </div>
-
-      <Loading :active.sync="isLoading"></Loading>
+    <Loading :active.sync="isLoading"></Loading>
+    <div class="container-fluid px-3">
       <div class="row">
-        <div class="col-lg-4 col-sm-6 mt-3" v-for="product in tempProducts" v-bind:key="product.id">
-          <Product
-            @showProduct="showProduct"
-            :product="product"
-            :url="product.imageUrl[0]"
-            @click="getProduct(product)"
-          />
+        <div class="col-10 col-md-5 col-lg-3 mx-auto my-3 px-5 text-capitalize">
+          <div
+            v-for="material in materials"
+            v-bind:key="material"
+            class="item-category"
+          >
+            <input
+              type="checkbox"
+              :value="material"
+              v-model="selectedMaterials"
+            />
+            <label for="material" class="mx-2">{{ material }}</label>
+          </div>
+        </div>
+        <div class="col-10 col-md-7 col-lg-9 mx-auto my-3">
+          <div class="row">
+            <div
+              class="col-lg-4 col-sm-6 mt-3"
+              v-for="product in tempProducts"
+              v-bind:key="product.id"
+            >
+              <Product
+                @showProduct="showProduct"
+                :product="product"
+                :url="product.imageUrl[0]"
+                @click="getProduct(product)"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -83,10 +100,15 @@ export default {
     filterProducts() {
       this.tempProducts = [];
       var product;
-      for (product of this.products) {
-        console.log(product);
-        if (this.selectedMaterials.includes(product.category)) {
-          this.tempProducts.push(product);
+
+      if (this.selectedMaterials.length === 0) {
+        this.tempProducts = this.products;
+      } else {
+        for (product of this.products) {
+          console.log(product);
+          if (this.selectedMaterials.includes(product.category)) {
+            this.tempProducts.push(product);
+          }
         }
       }
     },
