@@ -4,7 +4,8 @@
     <Loading :active.sync="isLoading"></Loading>
     <div class="container-fluid px-3">
       <div class="row">
-        <div class="col-10 col-md-5 col-lg-3 mx-auto my-3 px-5 text-capitalize">
+        <div class="col-10 col-md-4 col-lg-2 mx-auto my-3 px-5 text-capitalize">
+          <h3>物料</h3>
           <div
             v-for="material in materials"
             v-bind:key="material"
@@ -18,7 +19,7 @@
             <label for="material" class="mx-2">{{ material }}</label>
           </div>
         </div>
-        <div class="col-10 col-md-7 col-lg-9 mx-auto my-3">
+        <div class="col-10 col-md-8 col-lg-10 mx-auto my-3">
           <div class="row">
             <div
               class="col-lg-4 col-sm-6 mt-3"

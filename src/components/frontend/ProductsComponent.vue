@@ -1,6 +1,6 @@
 <template>
   <div class="card" @click="showProduct">
-    <img class="card-img img-fluid" :src="url" />
+    <img class="img-fluid card-img-top" :src="url" />
 
     <div class="card-img-overlay d-flex justify-content-end">
       <a href="#" class="card-link text-danger like" @click.prevent>
@@ -14,7 +14,9 @@
     </div>
     <div class="card-body">
       <h4 class="card-title">{{ product.title }}</h4>
-      <h6 v-if="false" class="card-subtitle mb-2 text-muted">Style: VA33TXRJ5</h6>
+      <h6 v-if="false" class="card-subtitle mb-2 text-muted">
+        Style: VA33TXRJ5
+      </h6>
       <p class="card-text">{{ product.content }}</p>
     </div>
   </div>

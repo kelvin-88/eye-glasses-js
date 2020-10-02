@@ -1,37 +1,48 @@
 <template>
-  <div class="container marketing">
-    <div class="row featurette mt-4">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">
-          簡約設計
-          <span class="text-muted">眼鏡工藝</span>
-        </h2>
-        <p class="lead">深信經過努力, 加上尖端的科技, 破傳統精益求精. 工藝不遺餘力</p>
-      </div>
-      <div class="col-md-5">
-        <img
-          class="featurette-image img-fluid mx-auto"
-          data-src="holder.js/500x500/auto"
-          src="https://images.unsplash.com/photo-1574422282888-4c30455ccdcf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-          alt="Generic placeholder image"
-        />
+  <div class="container-fluid marketing">
+    <div class="row featurette mt-4 home-banner">
+      <div class="col-10 mx-auto text-center">
+        <p class="text-white home-banner-text">時尚人氣品牌</p>
       </div>
     </div>
-    <div class="row featurette mt-4">
-      <div class="col-md-5">
-        <img
-          class="featurette-image img-fluid mx-auto"
-          data-src="holder.js/500x500/auto"
-          src="https://images.unsplash.com/photo-1486125305436-b7144b0734f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-          alt="Generic placeholder image"
-        />
+    <div class="col-10 mx-auto">
+      <div class="row featurette mt-4">
+        <div class="col-7">
+          <h2 class="featurette-heading mt-2">
+            簡約設計
+            <span class="text-muted">眼鏡工藝 專業服務</span>
+          </h2>
+          <p class="lead mt-4">
+            深信經過努力, 加上尖端的科技, 破傳統精益求精. 工藝不遺餘力
+          </p>
+        </div>
+        <div class="col-5">
+          <img
+            class="featurette-image img-fluid mx-auto"
+            data-src="holder.js/500x500/auto"
+            src="https://images.unsplash.com/photo-1486125305436-b7144b0734f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+            alt="Generic placeholder image"
+          />
+        </div>
       </div>
-      <div class="col-md-7">
-        <h2 class="featurette-heading">
-          尖端科技
-          <span class="text-muted">人體工學</span>
-        </h2>
-        <p class="lead">緊貼面型, 輕巧, 舒適, 堅固，耐用</p>
+      <div class="row featurette mt-4">
+        <div class="col-md-5">
+          <img
+            class="featurette-image img-fluid mx-auto"
+            data-src="holder.js/500x500/auto"
+            src="https://images.unsplash.com/photo-1539036776273-021ec1d78bec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+            alt="Eye Exam"
+            style="filter: blur(1px); -webkit-filter: blur(1px)"
+          />
+        </div>
+
+        <div class="col-md-7">
+          <h2 class="featurette-heading mt-2">
+            專業的驗配
+            <span class="text-muted">個人化體驗</span>
+          </h2>
+          <p class="lead mt-4">個人化鏡片, 提供最清晰的影像, 最適合您的眼鏡</p>
+        </div>
       </div>
     </div>
     <br />

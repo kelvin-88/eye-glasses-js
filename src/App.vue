@@ -115,6 +115,7 @@ export default {
 
 @import "./assets/main";
 @import url("https://fonts.googleapis.com/css?family=Proza+Libre");
+@import url("https://fonts.googleapis.com/css2?family=Tangerine&display=swap");
 
 // #app {
 //   font-family: Avenir, Helvetica, Arial, sans-serif;
