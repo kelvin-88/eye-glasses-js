@@ -41,7 +41,7 @@
             專業的驗配
             <span class="text-muted">個人化體驗</span>
           </h2>
-          <p class="lead mt-4">個人化鏡片, 提供最清晰的影像, 最適合您的眼鏡</p>
+          <p class="lead mt-4">個人化鏡片, 提供最清晰的影像, 最佳的配戴體驗</p>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@
     <div class="container-fluid px-3">
       <div class="row">
         <div class="col-10 col-md-4 col-lg-2 mx-auto my-3 px-5 text-capitalize">
-          <h3>物料</h3>
+          <h4>物料</h4>
           <div
             v-for="material in materials"
             v-bind:key="material"
@@ -18,7 +18,21 @@
             />
             <label for="material" class="mx-2">{{ material }}</label>
           </div>
+          <div class="row mt-4">
+            <label for="price-range h1">格價 $1 - $10,000</label>
+            <input
+              min="1"
+              max="10000"
+              type="range"
+              id="price-range"
+              v-model="priceRange"
+              @change="filterProducts"
+              class="form-control-range"
+            />
+            ${{ priceRange | toThousandSeperator }}
+          </div>
         </div>
+
         <div class="col-10 col-md-8 col-lg-10 mx-auto my-3">
           <div class="row">
             <div
@@ -55,6 +69,7 @@ export default {
   },
   data() {
     return {
+      priceRange: 10000,
       isLoading: false,
       title: "",
       products: [],
@@ -70,6 +85,7 @@ export default {
       pages: { current_page: 1, total_pages: 0 },
       materials: ["樹脂", "塑膠", "金屬"],
       selectedMaterials: [],
+      includeMaterials: [],
     };
   },
   watch: {
@@ -99,15 +115,19 @@ export default {
       console.log("setFavorites", products);
     },
     filterProducts() {
+      // console.log("filterProducts");
       this.tempProducts = [];
       var product;
 
       if (this.selectedMaterials.length === 0) {
-        this.tempProducts = this.products;
+        this.includeMaterials = this.materials;
       } else {
-        for (product of this.products) {
-          console.log(product);
-          if (this.selectedMaterials.includes(product.category)) {
+        this.includeMaterials = this.selectedMaterials;
+      }
+      for (product of this.products) {
+        console.log(product);
+        if (this.includeMaterials.includes(product.category)) {
+          if (product.price <= this.priceRange) {
             this.tempProducts.push(product);
           }
         }

@@ -1,23 +1,33 @@
 <template>
   <div class="card" @click="showProduct">
-    <img class="img-fluid card-img-top" :src="url" />
+    <img class="img-fluid" :src="url" />
 
     <div class="card-img-overlay d-flex justify-content-end">
       <a href="#" class="card-link text-danger like" @click.prevent>
         <div v-if="product.favorite">
-          <i class="fas fa-heart"></i>
+          <i class="fas fa-heart fa-2x"></i>
         </div>
         <div v-else>
-          <i class="far fa-heart"></i>
+          <i class="far fa-heart fa-2x"></i>
         </div>
       </a>
     </div>
-    <div class="card-body">
-      <h4 class="card-title">{{ product.title }}</h4>
+    <div class="flex-row d-flex w-100 p-2">
+      <h4 v-if="false" class="card-title">{{ product.title }}</h4>
       <h6 v-if="false" class="card-subtitle mb-2 text-muted">
         Style: VA33TXRJ5
       </h6>
-      <p class="card-text">{{ product.content }}</p>
+      <p v-if="false" class="card-text">{{ product.content }}</p>
+
+      <div class="mr-auto p-2 align-self-center">
+        <span class="h4">{{ product.title }}</span>
+      </div>
+      <span class="p-2 price align-self-center"
+        >${{ product.price | toThousandSeperator }}</span
+      >
+      <span class="p-2 original-price align-self-center"
+        >${{ product.origin_price | toThousandSeperator }}</span
+      >
     </div>
   </div>
 </template>

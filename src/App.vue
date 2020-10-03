@@ -1,54 +1,61 @@
 <template>
   <div id="app">
     <loading :active.sync="isLoading"></loading>
+    <div class="content">
+      <div id="nav" class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">
+          <img src="@/assets/logo.png" width="100" height="100" alt="" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#myNavbar,#myNavbarEnd"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item active">
+              <router-link class="nav-link" to="/">首頁</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/products">眼鏡</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/about">關于我們</router-link>
+            </li>
+          </ul>
+        </div>
+        <div
+          class="collapse navbar-collapse justify-content-end navbar-icons-width"
+          id="myNavbarEnd"
+        >
+          <ul class="navbar-nav mx-0">
+            <li class="nav-item">
+              <router-link class="nav-link" to="/favorites">
+                <i class="far fa-heart"></i>
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/cart">
+                <i class="fas fa-shopping-cart">({{ cartItems }})</i>
+              </router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-    <div id="nav" class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="#">大大眼鏡</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#myNavbar,#myNavbarEnd"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item active">
-            <router-link class="nav-link" to="/">首頁</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/products">眼鏡</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/about">關于我們</router-link>
-          </li>
-        </ul>
-      </div>
-      <div
-        class="collapse navbar-collapse justify-content-end navbar-icons-width"
-        id="myNavbarEnd"
-      >
-        <ul class="navbar-nav mx-0">
-          <li class="nav-item">
-            <router-link class="nav-link" to="/favorites">
-              <i class="far fa-heart"></i>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/cart">
-              <i class="fas fa-shopping-cart">({{ cartItems }})</i>
-            </router-link>
-          </li>
-        </ul>
-      </div>
+      <router-view />
     </div>
 
-    <router-view />
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">&copy;2020 大大眼鏡</span>
-        <p></p>
+    <footer class="footer mt-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-10 mx-auto text-center">
+            <span class="text-muted">&copy;2020 大大眼鏡</span>
+          </div>
+        </div>
       </div>
     </footer>
   </div>
@@ -143,12 +150,18 @@ export default {
   font-weight: 800;
   font-size: 200%;
 }
+// .footer {
+//   position: fixed;
+//   left: 0;
+//   bottom: 0;
+//   width: 100%;
+//   color: gray;
+//   text-align: center;
+// }
+.content {
+  min-height: calc(100vh - 50px);
+}
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  color: gray;
-  text-align: center;
+  height: 30px;
 }
 </style>

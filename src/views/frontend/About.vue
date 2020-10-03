@@ -1,7 +1,7 @@
 <template>
   <div class="about">
-    <div class="jumbotron">
-      <div class="container">
+    <div class="container">
+      <div class="jumbotron p-4">
         <h2>有關大大眼鏡</h2>
         <br />
         <h6>

@@ -11,10 +11,10 @@
             @click.prevent="updateFavorite(product)"
           >
             <div v-if="favorite">
-              <i class="fas fa-heart"></i>
+              <i class="fas fa-heart fa-2x"></i>
             </div>
             <div v-else>
-              <i class="far fa-heart"></i>
+              <i class="far fa-heart fa-2x"></i>
             </div>
           </a>
         </div>
@@ -180,7 +180,7 @@ export default {
   height: 417px;
 }
 
-.original-price {
+/* .original-price {
   text-decoration: line-through;
   padding: 0px;
   font-size: 16px;
@@ -189,5 +189,5 @@ export default {
 .price {
   font-size: 22px;
   color: #ff0000;
-}
+} */
 </style>
