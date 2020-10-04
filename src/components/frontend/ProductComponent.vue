@@ -24,18 +24,16 @@
       </div>
       <div class="col-lg-5 mt-4">
         <div class="d-flex flex-column h-100">
-          <div class="row">
-            <div class="col-lg-7 mt-2">
-              <h3 class="card-title">{{ product.title }}</h3>
-            </div>
-            <div
-              v-if="false && showShoppingCart"
-              class="col-lg-5 mt-2 align-items-end"
-            >
-              <a @click="addToCart" class="btn btn-danger btn-sm">
-                <i class="fas fa-heart"></i> 加入收藏夾
-              </a>
-            </div>
+          <div class="mt-2">
+            <h3 class="card-title">{{ product.title }}</h3>
+          </div>
+          <div
+            v-if="false && showShoppingCart"
+            class="col-lg-5 mt-2 align-items-end"
+          >
+            <a @click="addToCart" class="btn btn-danger btn-sm">
+              <i class="fas fa-heart"></i> 加入收藏夾
+            </a>
           </div>
 
           <p class="card-text text-muted">
