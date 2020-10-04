@@ -23,7 +23,10 @@
               <router-link class="nav-link" to="/products">眼鏡</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/about">關于我們</router-link>
+              <router-link class="nav-link" to="/lens">鏡片</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/about">關於我們</router-link>
             </li>
           </ul>
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="card shadow-sm" @click="showProduct">
+  <div class="card shadow-sm link-image" @click="showProduct">
     <Loading :active.sync="isLoading"></Loading>
     <div v-if="product.title" class="row">
       <div class="col-lg-7">

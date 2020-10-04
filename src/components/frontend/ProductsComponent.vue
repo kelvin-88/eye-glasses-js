@@ -1,8 +1,8 @@
 <template>
   <div class="card shadow-sm" @click.prevent="showProduct">
-    <img class="img-fluid" :src="url" />
+    <img class="img-fluid link-image selected-image" :src="url" />
 
-    <div class="card-img-overlay d-flex justify-content-end">
+    <div class="favorite">
       <a
         href="#"
         class="card-link text-danger like"
@@ -16,6 +16,7 @@
         </div>
       </a>
     </div>
+
     <div class="flex-row d-flex w-100 p-2">
       <h4 v-if="false" class="card-title">{{ product.title }}</h4>
       <h6 v-if="false" class="card-subtitle mb-2 text-muted">

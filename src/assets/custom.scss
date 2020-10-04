@@ -10,12 +10,16 @@ $secondary: $grey;
 // .nav-active {
 //   border-bottom: 0.1rem solid $yellow;
 // }
+.link-image {
+  cursor: pointer !important;
+}
 .home-banner {
   min-height: 60vh;
   background: url("https://images.unsplash.com/photo-1477965131329-0de8fc76b960?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80") center/cover fixed no-repeat;
   //font-family: 'Kaushan Script', cursive;
   font-family: 'Tangerine', cursive;
   font-size: 64px;
+  
 }
 .home-banner-text {
   position: absolute;  
@@ -71,4 +75,31 @@ $secondary: $grey;
   font-size: 22px;
   color: #ff0000;
 }
+
+// zoom
+ .favorite {
+    position: absolute;  
+    left: 95%;                        /* horizontal alignment */
+    top: 5%;                         /* vertical alignment */
+    transform: translate(-50%, -50%); /* precise centering; see link below */
+}
+
+.selected-image{
+  opacity: 1;
+}
+
+.selected-image:hover{
+  opacity: 0.7;
+}
 // product
+
+// lens
+.lens-title {
+ 
+  font-size: h3;
+  
+}
+
+.lens-title a.underline {
+    text-decoration: none;
+}
