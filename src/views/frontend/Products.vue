@@ -5,7 +5,7 @@
     <div class="container-fluid px-3">
       <div class="row">
         <div class="col-10 col-md-4 col-lg-2 mx-auto my-3 px-5 text-capitalize">
-          <h4>物料</h4>
+          <h4>系列</h4>
           <div
             v-for="material in materials"
             v-bind:key="material"
@@ -83,7 +83,8 @@ export default {
         uuid: "",
       },
       pages: { current_page: 1, total_pages: 0 },
-      materials: ["樹脂", "塑膠", "金屬"],
+      // materials: ["樹脂", "塑膠", "金屬", "經典系列"],
+      materials: ["經典系列", "春夏眼鏡系列", "行政眼鏡系列"],
       selectedMaterials: [],
       includeMaterials: [],
     };
@@ -126,7 +127,8 @@ export default {
       }
       for (product of this.products) {
         console.log(product);
-        if (this.includeMaterials.includes(product.category)) {
+        // if (this.includeMaterials.includes(product.category)) {
+        if (this.includeMaterials.includes(product.title)) {
           if (product.price <= this.priceRange) {
             this.tempProducts.push(product);
           }

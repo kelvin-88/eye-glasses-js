@@ -47,6 +47,7 @@
     </div>
     <br />
     <HotProduct />
+    <br />
   </div>
 </template>
 

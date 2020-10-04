@@ -1,12 +1,19 @@
 <template>
   <div class="container">
-    <h2 class="mt-4" style="text-align: center!important;">暢銷眼鏡</h2>
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <h2 class="mt-4" style="text-align: center !important">暢銷眼鏡</h2>
+    <div
+      id="carouselExampleControls"
+      class="carousel slide m-2"
+      data-ride="carousel"
+    >
       <div class="carousel-inner">
         <div
           v-for="product in tempProducts"
           v-bind:key="product.id"
-          :class="{'carousel-item':true, 'active':(firstTempProduct == product)}"
+          :class="{
+            'carousel-item': true,
+            active: firstTempProduct == product,
+          }"
         >
           <!--img class="d-block w-100" :src="product.imageUrl[0]" :alt="product.id" /-->
           <Product
@@ -112,7 +119,7 @@ export default {
 
 <style scoped>
 .carousel-inner {
-  height: 300px;
+  height: 420px;
 }
 
 .carousel .carousel-item {
