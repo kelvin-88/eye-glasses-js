@@ -1,9 +1,13 @@
 <template>
-  <div class="card" @click="showProduct">
+  <div class="card shadow-sm" @click.prevent="showProduct">
     <img class="img-fluid" :src="url" />
 
     <div class="card-img-overlay d-flex justify-content-end">
-      <a href="#" class="card-link text-danger like" @click.prevent>
+      <a
+        href="#"
+        class="card-link text-danger like"
+        @click.stop.prevent="updateFavorite(product)"
+      >
         <div v-if="product.favorite">
           <i class="fas fa-heart fa-2x"></i>
         </div>
@@ -43,6 +47,39 @@ export default {
     url: String,
   },
   methods: {
+    updateFavorite(product, event) {
+      // console.log("updateFavorite", product);
+      // if (!this.showShoppingCart) {
+      //   return;
+      // }
+
+      this.favorites = JSON.parse(localStorage.getItem("favorite"));
+      if (this.favorites === null) {
+        this.favorites = [];
+      }
+      console.log("favorites", this.favorites);
+      // this.$set(this.product, "favorite", false);
+
+      if (product.favorite) {
+        // remove favorite
+        if (this.favorites.includes(product.id)) {
+          this.favorites.splice(this.favorites.indexOf("B"), 1);
+          localStorage.setItem("favorite", JSON.stringify(this.favorites));
+        }
+      } else {
+        // add favorite
+        if (!this.favorites.includes(product.id)) {
+          this.favorites.push(product.id);
+          localStorage.setItem("favorite", JSON.stringify(this.favorites));
+          // this.$set(this.product, "favorite", product.favorite);
+        }
+      }
+      product.favorite = !product.favorite;
+      // this.$set(this.product, "favorite", product.favorite);
+      this.$forceUpdate();
+
+      // this.refreshFavorite();
+    },
     showProduct() {
       console.log("showProduct", this.product);
       // See the callback in the child comp reference

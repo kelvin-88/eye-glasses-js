@@ -4,8 +4,8 @@
     <Loading :active.sync="isLoading"></Loading>
     <div class="container-fluid px-3">
       <div class="row">
-        <div class="col-10 col-md-4 col-lg-2 mx-auto my-3 px-5 text-capitalize">
-          <h4>系列</h4>
+        <div class="col-10 col-md-4 col-lg-2 mx-auto my-3 px-4 text-capitalize">
+          <span class="h4" style="font-weight: bold">系列</span>
           <div
             v-for="material in materials"
             v-bind:key="material"
@@ -13,13 +13,14 @@
           >
             <input
               type="checkbox"
+              class="mt-3"
               :value="material"
               v-model="selectedMaterials"
             />
             <label for="material" class="mx-2">{{ material }}</label>
           </div>
-          <div class="row mt-4">
-            <label for="price-range h1">格價 $1 - $10,000</label>
+          <div class="row mt-5 px-2">
+            <label for="price-range h1" class="h5">格價 $1 - $10,000</label>
             <input
               min="1"
               max="10000"
@@ -29,7 +30,7 @@
               @change="filterProducts"
               class="form-control-range"
             />
-            ${{ priceRange | toThousandSeperator }}
+            <span class="h5">${{ priceRange | toThousandSeperator }}</span>
           </div>
         </div>
 

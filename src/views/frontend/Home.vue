@@ -1,19 +1,21 @@
 <template>
   <div class="container-fluid marketing">
-    <div class="row featurette mt-4 home-banner">
+    <div class="row featurette mt-4 home-banner" @click="showProduct">
       <div class="col-10 mx-auto text-center">
-        <p class="text-white home-banner-text">時尚人氣品牌</p>
+        <p class="text-white home-banner-text" to="/products">
+          春夏眼鏡系列<br />現已登出
+        </p>
       </div>
     </div>
     <div class="col-10 mx-auto">
       <div class="row featurette mt-4">
         <div class="col-7">
           <h2 class="featurette-heading mt-2">
-            簡約設計
-            <span class="text-muted">眼鏡工藝 專業服務</span>
+            多個國際品牌
+            <span class="text-muted"></span>
           </h2>
           <p class="lead mt-4">
-            深信經過努力, 加上尖端的科技, 破傳統精益求精. 工藝不遺餘力
+            提供多個國際品牌鏡架，優良品質， 多種風格選擇。
           </p>
         </div>
         <div class="col-5">
@@ -39,9 +41,11 @@
         <div class="col-md-7">
           <h2 class="featurette-heading mt-2">
             專業的驗配
-            <span class="text-muted">個人化體驗</span>
+            <span class="text-muted">個人化體驗 專業服務</span>
           </h2>
-          <p class="lead mt-4">個人化鏡片, 提供最清晰的影像, 最佳的配戴體驗</p>
+          <p class="lead mt-4">
+            個人化鏡片，提供最清晰的影像，最佳的配戴體驗。
+          </p>
         </div>
       </div>
     </div>
@@ -59,7 +63,12 @@ export default {
   components: {
     HotProduct,
   },
-
   name: "Home",
+  methods: {
+    showProduct() {
+      // console.log("showProduct");
+      this.$router.push("Products");
+    },
+  },
 };
 </script>

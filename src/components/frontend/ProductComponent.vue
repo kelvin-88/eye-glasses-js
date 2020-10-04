@@ -1,14 +1,17 @@
 <template>
-  <div class="card" @click="showProduct">
+  <div class="card shadow-sm" @click="showProduct">
     <Loading :active.sync="isLoading"></Loading>
     <div v-if="product.title" class="row">
       <div class="col-lg-7">
-        <img class="card-img-detail" :src="product.imageUrl[0]" />
-        <div class="card-img-overlay d-flex justify-content-end">
+        <img class="img-fluid" :src="product.imageUrl[0]" />
+        <div
+          v-if="showShoppingCart"
+          class="card-img-overlay d-flex justify-content-end"
+        >
           <a
             href="#"
             class="card-link text-danger like mr-3"
-            @click.prevent="updateFavorite(product)"
+            @click.stop.prevent="updateFavorite(product)"
           >
             <div v-if="favorite">
               <i class="fas fa-heart fa-2x"></i>
@@ -21,12 +24,25 @@
       </div>
       <div class="col-lg-5 mt-4">
         <div class="d-flex flex-column h-100">
-          <h4 class="card-title">{{ product.title }}</h4>
-          <p></p>
+          <div class="row">
+            <div class="col-lg-7 mt-2">
+              <h3 class="card-title">{{ product.title }}</h3>
+            </div>
+            <div
+              v-if="false && showShoppingCart"
+              class="col-lg-5 mt-2 align-items-end"
+            >
+              <a @click="addToCart" class="btn btn-danger btn-sm">
+                <i class="fas fa-heart"></i> 加入收藏夾
+              </a>
+            </div>
+          </div>
 
-          <p class="card-text text-muted">{{ product.content }}</p>
+          <p class="card-text text-muted">
+            <span class="h5"> {{ product.content }}</span>
+          </p>
 
-          <p class="card-subtitle mt-2" v-html="product.description"></p>
+          <p class="card-subtitle h5 mt-2" v-html="product.description"></p>
           <div class="mt-auto mb-4">
             <div class="row">
               <div class="col-lg-7 mt-2">
@@ -43,7 +59,7 @@
                 v-if="showShoppingCart"
                 class="col-lg-5 mt-2 align-items-end"
               >
-                <a @click="addToCart" class="btn btn-danger">
+                <a @click="addToCart" class="btn btn-danger btn-lg">
                   <i class="fas fa-shopping-cart"></i> 加入購物車
                 </a>
               </div>
@@ -109,9 +125,9 @@ export default {
     },
     updateFavorite(product) {
       // console.log("updateFavorite", product);
-      if (!this.showShoppingCart) {
-        return;
-      }
+      // if (!this.showShoppingCart) {
+      //   return;
+      // }
 
       this.favorites = JSON.parse(localStorage.getItem("favorite"));
       if (this.favorites === null) {
@@ -175,10 +191,10 @@ export default {
   margin-top: 0rem;
 }
 
-.card-img-detail {
+/* .card-img-detail {
   width: 100%;
   height: 417px;
-}
+} */
 
 /* .original-price {
   text-decoration: line-through;
