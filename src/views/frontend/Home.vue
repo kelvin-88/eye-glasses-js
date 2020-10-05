@@ -21,7 +21,7 @@
         </div>
         <div class="col-5" @click="showProducts">
           <img
-            class="featurette-image img-fluid mx-auto link-image"
+            class="featurette-image img-fluid mx-auto link-image rounded-image"
             data-src="holder.js/500x500/auto"
             src="https://images.unsplash.com/photo-1486125305436-b7144b0734f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
             alt="Generic placeholder image"
@@ -31,7 +31,7 @@
       <div class="row featurette mt-4">
         <div class="col-md-5" @click="showLens">
           <img
-            class="featurette-image img-fluid mx-auto link-image"
+            class="featurette-image img-fluid mx-auto link-image rounded-image"
             data-src="holder.js/500x500/auto"
             src="https://images.unsplash.com/photo-1539036776273-021ec1d78bec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
             alt="Eye Exam"

@@ -28,27 +28,8 @@
       </div>
     </div>
 
-    <div v-if="false" class="card">
-      <div class="card-header h3">
-        <img
-          src="@/assets/lens.png"
-          class="mr-2"
-          style="width: 50px; height: 50px"
-          alt=""
-        />漸進多焦點鏡片
-      </div>
-      <div class="card-body">
-        <blockquote class="blockquote mb-0">
-          <p>多功能同時可看遠中近</p>
-          <footer class="blockquote-footer">
-            漸變焦距的鏡片,可同時看遠中近。減低不同情況下,需要更換眼鏡的煩惱。
-          </footer>
-        </blockquote>
-      </div>
-    </div>
-
     <div v-for="(len, index) in lens" :key="index">
-      <div class="card mb-5">
+      <div class="card mb-5 lens-card">
         <div class="card-header h3">
           <img
             src="@/assets/lens-blue.png"

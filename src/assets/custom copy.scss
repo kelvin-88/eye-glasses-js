@@ -2,7 +2,7 @@
 $blue: #3399ff;
 $orange: #f26c22;
 $grey: #d3d3d3;
-$nav-bar-underline: #fdbe02;
+$nav-bar-underlin: #fdbe02;
 
 $primary: $blue;
 $secondary: $grey;
@@ -10,11 +10,6 @@ $secondary: $grey;
 // .nav-active {
 //   border-bottom: 0.1rem solid $yellow;
 // }
-.rounded-image {
-    border-top-left-radius: calc(.25rem - 1px);
-    border-top-right-radius: calc(.25rem - 1px);
-}
-
 .link-image {
   cursor: pointer !important;
 }
@@ -40,7 +35,7 @@ $secondary: $grey;
 .router-link-exact-active {
   //your desired design when link is clicked
   //font-weight: 700;
-  border-bottom: 0.1rem solid $nav-bar-underline;
+  border-bottom: 0.1rem solid $nav-bar-underlin;
 }
 
 .navbar-brand {
@@ -54,21 +49,21 @@ $secondary: $grey;
 }
 
 // products
-// .single-item {
-//   transition: all 0.3 linear;
-// }
+.single-item {
+  transition: all 0.3 linear;
+}
 
-// .single-item :hover{
-//   box-shadow: 0 10px 15px black;
-// }
+.single-item :hover{
+  box-shadow: 0 10px 15px black;
+}
 
-// .store-img {
-//   transition: all 1s ease-in-out;
-// }
+.store-img {
+  transition: all 1s ease-in-out;
+}
 
-// .img-container:hover .store-img {
-//   transform: scale(1.2);
-// }
+.img-container:hover .store-img {
+  transform: scale(1.2);
+}
 
 .card-img-top {
    width: 100%;
@@ -105,18 +100,18 @@ $secondary: $grey;
 // zoom
  .favorite {
     position: absolute;  
-    right: -2px;                        /* horizontal alignment */
-    top: 25px;                         /* vertical alignment */
+    left: 95%;                        /* horizontal alignment */
+    top: 5%;                         /* vertical alignment */
     transform: translate(-50%, -50%); /* precise centering; see link below */
 }
 
-.selected-image{
-  opacity: 1;
-}
+// .selected-image{
+//   opacity: 1;
+// }
 
-.selected-image:hover{
-  opacity: 0.7;
-}
+// .selected-image:hover{
+//   opacity: 0.7;
+// }
 // product
 
 // lens
@@ -128,12 +123,4 @@ $secondary: $grey;
 
 .lens-title a.underline {
     text-decoration: none;
-}
-
-.lens-card {
-  transition: all 1s ease-in-out;
-}
-.lens-card:hover{
-  transform:scale(1.1); 
-   cursor: pointer;
 }

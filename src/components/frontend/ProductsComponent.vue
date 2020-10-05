@@ -1,38 +1,39 @@
 <template>
-  <div class="card shadow-sm" @click.prevent="showProduct">
-    <img class="img-fluid link-image selected-image" :src="url" />
+  <div class="card single-item" @click.prevent="showProduct">
+    <div class="img-container">
+      <img
+        class="card-img-top store-img img-fluid link-image selected-image"
+        :src="url"
+      />
 
-    <div class="favorite">
-      <a
-        href="#"
-        class="card-link text-danger like"
-        @click.stop.prevent="updateFavorite(product)"
-      >
-        <div v-if="product.favorite">
-          <i class="fas fa-heart fa-2x"></i>
-        </div>
-        <div v-else>
-          <i class="far fa-heart fa-2x"></i>
-        </div>
-      </a>
+      <div class="favorite">
+        <a
+          href="#"
+          class="card-link text-danger like"
+          @click.stop.prevent="updateFavorite(product)"
+        >
+          <div v-if="product.favorite">
+            <i class="fas fa-heart fa-2x"></i>
+          </div>
+          <div v-else>
+            <i class="far fa-heart fa-2x"></i>
+          </div>
+        </a>
+      </div>
     </div>
 
-    <div class="flex-row d-flex w-100 p-2">
-      <h4 v-if="false" class="card-title">{{ product.title }}</h4>
-      <h6 v-if="false" class="card-subtitle mb-2 text-muted">
-        Style: VA33TXRJ5
-      </h6>
-      <p v-if="false" class="card-text">{{ product.content }}</p>
-
-      <div class="mr-auto p-2 align-self-center">
-        <span class="h4">{{ product.title }}</span>
+    <div class="card-body p-1">
+      <div class="card-text d-flex">
+        <div class="mr-auto p-2 align-self-center">
+          <span class="h4">{{ product.title }}</span>
+        </div>
+        <span class="p-2 price align-self-center"
+          >${{ product.price | toThousandSeperator }}</span
+        >
+        <span class="p-2 original-price align-self-center"
+          >${{ product.origin_price | toThousandSeperator }}</span
+        >
       </div>
-      <span class="p-2 price align-self-center"
-        >${{ product.price | toThousandSeperator }}</span
-      >
-      <span class="p-2 original-price align-self-center"
-        >${{ product.origin_price | toThousandSeperator }}</span
-      >
     </div>
   </div>
 </template>
@@ -93,14 +94,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.card {
-  margin-top: 0rem;
-}
-
-.card-img {
-  width: 100%;
-  height: 230px;
-}
-</style>
