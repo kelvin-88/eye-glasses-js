@@ -16,7 +16,7 @@
         </button>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="navbar-nav mx-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <router-link class="nav-link" to="/">首頁</router-link>
             </li>
             <li class="nav-item">
@@ -126,6 +126,8 @@ export default {
 @import "./assets/main";
 @import url("https://fonts.googleapis.com/css?family=Proza+Libre");
 @import url("https://fonts.googleapis.com/css2?family=Tangerine&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap");
 
 // #app {
 //   font-family: Avenir, Helvetica, Arial, sans-serif;
