@@ -1,67 +1,35 @@
 <template>
   <div class="container">
     <Loading :active.sync="isLoading"></Loading>
-    <div class="row">
-      <div class="col-lg-12 mt-3" v-for="item in items" v-bind:key="item.id">
-        <Cart
-          @updateCart="updateCart"
-          @updating="updating"
-          @showProduct="showProduct"
-          @deleteCart="deleteCart"
-          :item="item"
-        />
-      </div>
-    </div>
-    <div class="row mt-4" v-if="items.length > 0">
-      <div class="col-md-6">
-        <button
-          type="submit"
-          class="btn btn-primary btn-lg"
-          @click.prevent="$router.push('Order')"
-        >確認訂單</button>
-      </div>
-      <h4 class="col-md-5 text-right">總計 ${{ totalAmount | toThousandSeperator}}</h4>
-    </div>
-    <br />
+    <div class="h4"><strong>購物車</strong></div>
     <hr />
-
-    <h2 class="mt-4" style="text-align: center!important;">暢銷產品</h2>
-
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div
-          v-for="product in tempProducts"
-          v-bind:key="product.id"
-          :class="{'carousel-item':true, 'active':(firstTempProduct == product)}"
-        >
-          <!--img class="d-block w-100" :src="product.imageUrl[0]" :alt="product.id" /-->
-          <Product
+    <div v-if="items.length > 0">
+      <div class="row">
+        <div class="col-lg-12 mt-3" v-for="item in items" v-bind:key="item.id">
+          <Cart
+            @updateCart="updateCart"
+            @updating="updating"
             @showProduct="showProduct"
-            :product="product"
-            :showShoppingCart="false"
-            :url="product.imageUrl[0]"
+            @deleteCart="deleteCart"
+            :item="item"
           />
         </div>
       </div>
-      <a
-        class="carousel-control-prev"
-        href="#carouselExampleControls"
-        role="button"
-        data-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a
-        class="carousel-control-next"
-        href="#carouselExampleControls"
-        role="button"
-        data-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+      <div class="row">
+        <hr style="width: 100%; text-align: left; margin-left: 0" />
+      </div>
+      <div class="d-flex flex-row justify-content-end w-100">
+        <button
+          type="submit"
+          class="btn btn-primary btn-lg px-4"
+          @click.prevent="$router.push('Order')"
+        >
+          確認訂單
+        </button>
+        <h4 class="p-2">總計 ${{ totalAmount | toThousandSeperator }}</h4>
+      </div>
     </div>
+    <div v-else><h4 class="mt-4">您的購物車尚未加入任何商品</h4></div>
 
     <div
       id="delCartModal"
@@ -77,7 +45,12 @@
             <h5 id="exampleModalLabel" class="modal-title">
               <span>刪除產品</span>
             </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -87,8 +60,16 @@
             商品(刪除後將無法恢復)。
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-danger" @click="delProduct">確認刪除</button>
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              data-dismiss="modal"
+            >
+              取消
+            </button>
+            <button type="button" class="btn btn-danger" @click="delProduct">
+              確認刪除
+            </button>
           </div>
         </div>
       </div>
@@ -99,13 +80,11 @@
 <script>
 // @ is an alias to /src
 import Cart from "@/components/frontend/CartComponent.vue";
-import Product from "@/components/frontend/ProductComponent.vue";
 
 export default {
   /* global $ */
   components: {
     Cart,
-    Product,
   },
   created() {
     this.getShoppingCart(1);
@@ -175,8 +154,9 @@ export default {
       this.isLoading = true;
 
       // let api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/ec/products?page=${page}`;
-      const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping?page=${page}`;
-
+      let api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping?page=${page}`;
+      //
+      api = `${process.env.VUE_APP_APIPATH}api/6b69171f-d486-488a-beaf-ee85eb21fa24/ec/shopping?page=${page}`;
       this.$http
         .get(api)
         .then((response) => {

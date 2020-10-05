@@ -20,7 +20,10 @@
             <label for="material" class="mx-2">{{ material }}</label>
           </div>
           <div class="row mt-5 px-2">
-            <label for="price-range h1" class="h5">格價 $1 - $10,000</label>
+            <label for="price-range" class="h5">
+              <span class="h4" style="font-weight: bold">格價</span> $1 -
+              $10,000</label
+            >
             <input
               min="1"
               max="10000"
