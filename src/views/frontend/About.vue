@@ -4,12 +4,12 @@
       <div class="row" >
         <div class="col-10 mx-auto">
           <div class="row">
-            <div class="card col-6 p-0 shadow rounded">
+            <div class="card col-12 col-md-8 col-lg-6 p-0 shadow">
 
           <img class="img-fluid " src="https://images.unsplash.com/photo-1486250944723-86bca2b15b06?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80
 " alt="">
           </div>
-        <div class="col-6" style="background: gainsboro ">
+        <div class="col-12 col-md-8 col-lg-6" style="background: gainsboro ">
           <div class="m-3">
             <h2>有關大大眼鏡</h2>
             <br />

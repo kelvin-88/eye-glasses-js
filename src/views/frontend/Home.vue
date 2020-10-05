@@ -10,7 +10,7 @@
     </div>
     <div class="col-10 mx-auto">
       <div class="row featurette mt-4">
-        <div class="col-7">
+        <div class="col-12 col-md-7 col-lg-7">
           <h2 class="featurette-heading mt-2">
             國際品牌
             <span class="text-muted"></span>
@@ -19,7 +19,7 @@
             代理多個國際品牌鏡架，品質優良， 提供多元化的選擇。
           </p>
         </div>
-        <div class="col-5" @click="showProducts">
+        <div class="col-12 col-md-5 col-lg-5" @click="showProducts">
           <img
             class="featurette-image img-fluid mx-auto link-image rounded-image"
             data-src="holder.js/500x500/auto"
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="row featurette mt-4">
-        <div class="col-md-5" @click="showLens">
+        <div class="col-12 col-md-5 col-md-5" @click="showLens">
           <img
             class="featurette-image img-fluid mx-auto link-image rounded-image"
             data-src="holder.js/500x500/auto"
@@ -39,7 +39,7 @@
           />
         </div>
 
-        <div class="col-md-7">
+        <div class="col-12 col-md-7 col-lg-7">
           <h2 class="featurette-heading mt-2">
             專業的驗配
             <span class="text-muted">個人化體驗 專業服務</span>

@@ -1,75 +1,83 @@
 <template>
-  <div class="container">
-    <Loading :active.sync="isLoading"></Loading>
-    <div class="h4"><strong>購物車</strong></div>
-    <hr />
-    <div v-if="items.length > 0">
-      <div class="row">
-        <div class="col-lg-12 mt-3" v-for="item in items" v-bind:key="item.id">
-          <Cart
-            @updateCart="updateCart"
-            @updating="updating"
-            @showProduct="showProduct"
-            @deleteCart="deleteCart"
-            :item="item"
-          />
+  <div class="container-fluid">
+    <div class="col-10 mx-auto">
+      <Loading :active.sync="isLoading"></Loading>
+      <div class="h4"><strong>購物車</strong></div>
+      <hr />
+      <div v-if="items.length > 0">
+        <div class="row">
+          <div
+            class="col-lg-12 mt-3"
+            v-for="item in items"
+            v-bind:key="item.id"
+          >
+            <Cart
+              @updateCart="updateCart"
+              @updating="updating"
+              @showProduct="showProduct"
+              @deleteCart="deleteCart"
+              :item="item"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <hr style="width: 100%; text-align: left; margin-left: 0" />
+        </div>
+        <div class="d-flex flex-row justify-content-end w-100">
+          <button
+            type="submit"
+            class="btn btn-primary btn-lg px-4"
+            @click.prevent="$router.push('Order')"
+          >
+            確認訂單
+          </button>
+          <h4 class="p-2">總計 ${{ totalAmount | toThousandSeperator }}</h4>
         </div>
       </div>
-      <div class="row">
-        <hr style="width: 100%; text-align: left; margin-left: 0" />
-      </div>
-      <div class="d-flex flex-row justify-content-end w-100">
-        <button
-          type="submit"
-          class="btn btn-primary btn-lg px-4"
-          @click.prevent="$router.push('Order')"
-        >
-          確認訂單
-        </button>
-        <h4 class="p-2">總計 ${{ totalAmount | toThousandSeperator }}</h4>
-      </div>
-    </div>
-    <div v-else><h4 class="mt-4">您的購物車尚未加入任何商品</h4></div>
+      <div v-else><h4 class="mt-4">您的購物車尚未加入任何商品</h4></div>
 
-    <div
-      id="delCartModal"
-      class="modal fade"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-danger text-white">
-            <h5 id="exampleModalLabel" class="modal-title">
-              <span>刪除產品</span>
-            </h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            是否刪除
-            <strong class="text-danger">{{ tempProduct.product.title }}</strong>
-            商品(刪除後將無法恢復)。
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-outline-secondary"
-              data-dismiss="modal"
-            >
-              取消
-            </button>
-            <button type="button" class="btn btn-danger" @click="delProduct">
-              確認刪除
-            </button>
+      <div
+        id="delCartModal"
+        class="modal fade"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content border-0">
+            <div class="modal-header bg-danger text-white">
+              <h5 id="exampleModalLabel" class="modal-title">
+                <span>刪除產品</span>
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              是否刪除
+              <strong class="text-danger">{{
+                tempProduct.product.title
+              }}</strong>
+              商品(刪除後將無法恢復)。
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                data-dismiss="modal"
+              >
+                取消
+              </button>
+              <button type="button" class="btn btn-danger" @click="delProduct">
+                確認刪除
+              </button>
+            </div>
           </div>
         </div>
       </div>

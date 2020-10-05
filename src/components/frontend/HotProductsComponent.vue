@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="col-8 mx-auto">
+    <div class="col-12 col-md-10 col-lg-8 mx-auto">
       <h2 class="mt-4" style="text-align: center !important">暢銷眼鏡</h2>
       <div
         id="carouselExampleControls"
