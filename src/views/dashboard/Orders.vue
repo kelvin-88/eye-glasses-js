@@ -16,10 +16,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item) in orders" :key="item.id">
+            <tr v-for="item in orders" :key="item.id">
               <td>{{ item.created.datetime }}</td>
               <td>
-                <li v-for="(product) in item.products" :key="product.title">
+                <li v-for="product in item.products" :key="product.title">
                   {{ product.product.title }}
                   ({{ product.quantity }} {{ product.product.unit }})
                 </li>
@@ -39,8 +39,7 @@
   </div>
 </template>
 <script>
-import Pagination from '../Pagination.vue';
-import $ from 'jquery';
+import Pagination from "../Pagination.vue";
 
 export default {
   components: {
@@ -49,7 +48,7 @@ export default {
   created() {
     this.getorders(1);
   },
-  props: ['token'],
+  props: ["token"],
   methods: {
     refreshScreen() {
       this.getorders(this.pages.current_page);
@@ -57,24 +56,17 @@ export default {
     getorders(page = 1) {
       this.isLoading = true;
 
-      //let api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/ec/orders?page=${page}`;
       const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/orders?page=${page}`;
 
       this.$http
         .get(api)
         .then((response) => {
           this.isLoading = false;
-          //console.log(response);
           console.log(response.data.data);
-          //this.orders = JSON.parse(JSON.stringify(response.data.data));
           this.orders = response.data.data;
 
           this.pages.current_page = response.data.meta.pagination.current_page;
           this.pages.total_pages = response.data.meta.pagination.total_pages;
-          //this.pages.total_pages = 5;
-
-          //this.pages.current_page = 2;
-          //this.pages.total_pages = 5;
 
           console.log(this.orders);
         })
@@ -87,15 +79,15 @@ export default {
   data() {
     return {
       isLoading: false,
-      title: '',
+      title: "",
       orders: [],
       tempProduct: {
         imageUrl: [],
       },
       tempIndex: 0,
       user: {
-        token: '',
-        uuid: '',
+        token: "",
+        uuid: "",
       },
       pages: { current_page: 1, total_pages: 0 },
     };

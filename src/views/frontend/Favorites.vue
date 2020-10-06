@@ -3,8 +3,14 @@
     <!--Product title="abc" /-->
     <div class="container">
       <Loading :active.sync="isLoading"></Loading>
-      <div class="row">
-        <div class="col-lg-4 col-sm-6 mt-3" v-for="product in tempProducts" v-bind:key="product.id">
+      <div class="h4"><strong>我的最愛</strong></div>
+      <hr />
+      <div class="row" v-if="tempProducts.length > 0">
+        <div
+          class="col-lg-4 col-sm-6 mt-3"
+          v-for="product in tempProducts"
+          v-bind:key="product.id"
+        >
           <Product
             @showProduct="showProduct"
             :product="product"
@@ -13,6 +19,7 @@
           />
         </div>
       </div>
+      <div v-else><h4 class="mt-4">我的最愛目前是空的</h4></div>
     </div>
   </div>
 </template>

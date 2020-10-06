@@ -20,7 +20,11 @@ const routes = [
     name: "Products",
     component: () => import("../views/frontend/Products.vue"),
   },
-
+  {
+    path: "/lens",
+    name: "Lens",
+    component: () => import("../views/frontend/Lens.vue"),
+  },
   {
     path: "/product/:id",
     name: "Product",
@@ -41,15 +45,34 @@ const routes = [
     name: "Favorites",
     component: () => import("../views/frontend/Favorites.vue"),
   },
-  // {
-  //   path: "/about",
-  //   name: "About",
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the r,oute, is visited.
-  //   component: () =>
-  //     impo, rt(/* webpackChunkName: "about" */ "../views/About.vue")
-  // }
+
+  {
+    path: '/admin',
+    component: () => import('../views/dashboard/Dashboard.vue'),
+    children: [
+      {
+        path: 'products',
+        component: () => import('../views/dashboard/Products.vue'),
+      },
+      {
+        path: 'coupons',
+        component: () => import('../views/dashboard/Coupons.vue'),
+      },
+      {
+        path: 'orders',
+        component: () => import('../views/dashboard/Orders.vue'),
+      },
+      {
+        path: 'images',
+        component: () => import('../views/dashboard/Images.vue'),
+      },
+      {
+        path: 'upload',
+        component: () => import('../views/dashboard/Upload.vue'),
+      },
+    ],
+  },
+
 ];
 
 const router = new VueRouter({
