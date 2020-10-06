@@ -26,7 +26,7 @@
         <div class="d-flex flex-row justify-content-end w-100">
           <button
             type="submit"
-            class="btn btn-primary btn-lg px-4"
+            class="btn btn-primary btn-lg px-4 mr-2"
             @click.prevent="$router.push('Order')"
           >
             確認訂單
@@ -162,9 +162,8 @@ export default {
       this.isLoading = true;
 
       // let api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/ec/products?page=${page}`;
-      let api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping?page=${page}`;
+      const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping?page=${page}`;
       //
-      api = `${process.env.VUE_APP_APIPATH}api/6b69171f-d486-488a-beaf-ee85eb21fa24/ec/shopping?page=${page}`;
       this.$http
         .get(api)
         .then((response) => {

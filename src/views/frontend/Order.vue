@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div class="container mt-3">
+  <div class="container-fluid">
+    <div class="col-12 col-md-12 col-lg-10 mx-auto">
       <Loading :active.sync="isLoading"></Loading>
-      <div class="modal-dialog modal-xl" role="document">
+      <div class="mx-0" role="document">
         <div class="modal-content border-0">
           <div class="modal-header bg-dark text-white">
             <h5 id="exampleModalLabel" class="modal-title">
@@ -14,9 +14,12 @@
             <form @submit.prevent="submitForm">
               <div class="modal-body">
                 <div class="row">
-                  <div class="col-sm-8">
+                  <div class="col-12 col-md-12 col-lg-8">
                     <div class="form-group">
-                      <ValidationProvider rules="required" v-slot="{ errors, classes }">
+                      <ValidationProvider
+                        rules="required"
+                        v-slot="{ errors, classes }"
+                      >
                         <label for="name">名稱</label>
                         <input
                           id="name"
@@ -32,7 +35,10 @@
 
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <ValidationProvider rules="required|email" v-slot="{ errors, classes }">
+                        <ValidationProvider
+                          rules="required|email"
+                          v-slot="{ errors, classes }"
+                        >
                           <label for="email">電子信箱</label>
                           <input
                             id="email"
@@ -46,7 +52,10 @@
                         </ValidationProvider>
                       </div>
                       <div class="form-group col-md-6">
-                        <validation-provider rules="required|min:8" v-slot="{ errors, classes }">
+                        <validation-provider
+                          rules="required|min:8"
+                          v-slot="{ errors, classes }"
+                        >
                           <label for="tel">電話</label>
                           <input
                             id="tel"
@@ -62,7 +71,10 @@
                     </div>
 
                     <div class="form-group">
-                      <validation-provider rules="required" v-slot="{ errors, classes }">
+                      <validation-provider
+                        rules="required"
+                        v-slot="{ errors, classes }"
+                      >
                         <label for="address">運送地址</label>
                         <textarea
                           id="address"
@@ -80,7 +92,11 @@
                       <div class="form-group col-md-6">
                         <validation-provider rules="required">
                           <label for="payment">購買方式</label>
-                          <select class="form-control" id="payment" v-model="tempOrder.payment">
+                          <select
+                            class="form-control"
+                            id="payment"
+                            v-model="tempOrder.payment"
+                          >
                             <option disabled value>請選擇付款方式</option>
                             <option>WebATM</option>
                             <option>Barcode</option>
@@ -115,46 +131,65 @@
                     </div>
 
                     <div class="form-row mt-4">
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-6 col-md-6">
                         <button
                           type="submit"
                           class="btn btn-primary btn-lg"
                           :disabled="invalid"
-                        >確認付款</button>
+                        >
+                          確認付款
+                        </button>
                       </div>
-                      <div class="form-group col-md-6 text-right">
+                      <div class="form-group col-6 col-md-6 text-right">
                         <button
                           type="button"
                           class="btn btn-outline-primary btn-lg"
                           @click.prevent="$router.push('Cart')"
-                        >回到購物車</button>
+                        >
+                          回到購物車
+                        </button>
                       </div>
                     </div>
                   </div>
 
-                  <div class="col-sm-4">
+                  <div class="col-12 col-md-12 col-lg-4">
                     <!--tr v-for="(item, index) in products" :key="item.id"-->
-                    <div class="row" v-for="(item) in items" :key="item.id">
-                      <div class="col-4">
+                    <div class="row mt-2" v-for="item in items" :key="item.id">
+                      <div class="col-12 col-md-8 col-lg-4">
                         <img
-                          class="item-img"
                           :src="item.product.imageUrl[0]"
-                          style="height: 50px; width: 100px;"
+                          class="img-fluid"
                         />
                       </div>
-                      <div class="col-8" style="font-size: 10px;">
-                        <div class="form-group">
-                          {{ item.product.title }}
-                          <div class="text-muted">{{ item.product.content }}</div>
-                          <div
-                            class="text-right"
-                          >{{ item.quantity }} x ${{ item.product.price |toThousandSeperator}}</div>
+                      <div
+                        class="col-12 col-md-10 col-lg-8"
+                        style="font-size: 10px"
+                      >
+                        <div class="form-group row">
+                          <div class="col-12 h5">
+                            {{ item.product.title }}
+                          </div>
+                          <div class="col-12 h5 text-muted">
+                            {{ item.product.content }}
+                          </div>
+                          <div class="col-12 h5 text-right">
+                            {{ item.quantity }} x ${{
+                              item.product.price | toThousandSeperator
+                            }}
+                          </div>
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <h5 class="col-md-6">總計</h5>
-                      <div class="col-md-6 text-right">${{ totalAmount | toThousandSeperator}}</div>
+                      <hr
+                        style="width: 100%; text-align: left; margin-left: 0"
+                      />
+                    </div>
+                    <div class="row">
+                      <h5 class="col-6 col-md-6">總計</h5>
+                      <div class="col-6 col-md-6 text-right h5">
+                        ${{ totalAmount | toThousandSeperator }}
+                      </div>
                     </div>
                   </div>
                 </div>

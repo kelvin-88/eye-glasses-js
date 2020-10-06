@@ -35,6 +35,9 @@
           id="myNavbarEnd"
         >
           <ul class="navbar-nav mx-0">
+            <li v-if="false" class="nav-item">
+              <router-link class="nav-link" to="/admin">登入</router-link>
+            </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/favorites">
                 <i class="far fa-heart"></i>

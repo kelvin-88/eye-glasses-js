@@ -6,7 +6,9 @@
       <div>
         <Loading :active.sync="isLoading"></Loading>
         <div class="text-right mt-4">
-          <button class="btn btn-primary" @click="openModal('new')">建立新的優待券</button>
+          <button class="btn btn-primary" @click="openModal('new')">
+            建立新的優待券
+          </button>
         </div>
         <table class="table mt-4">
           <thead>
@@ -34,11 +36,15 @@
                   <button
                     class="btn btn-outline-primary btn-sm"
                     @click="openModal('edit', item, index)"
-                  >編輯</button>
+                  >
+                    編輯
+                  </button>
                   <button
                     class="btn btn-outline-danger btn-sm"
                     @click="openModal('delete', item, index)"
-                  >刪除</button>
+                  >
+                    刪除
+                  </button>
                 </div>
               </td>
             </tr>
@@ -60,7 +66,12 @@
                 <h5 id="exampleModalLabel" class="modal-title">
                   <span>{{ title }}</span>
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -100,7 +111,10 @@
 
                     <div class="form-group">
                       <label for="coddeadline_at">到期日</label>
-                      <datepicker v-model="deadline" :inline="true"></datepicker>
+                      <datepicker
+                        v-model="deadline"
+                        :inline="true"
+                      ></datepicker>
                       <!--input
                         id="deadline_at"
                         v-model="tempCoupon.deadline_at"
@@ -118,15 +132,29 @@
                           class="form-check-input"
                           type="checkbox"
                         />
-                        <label class="form-check-label" for="is_enabled">是否啟用</label>
+                        <label class="form-check-label" for="is_enabled"
+                          >是否啟用</label
+                        >
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary" @click="updateCoupon">確認</button>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  data-dismiss="modal"
+                >
+                  取消
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  @click="updateCoupon"
+                >
+                  確認
+                </button>
               </div>
             </div>
           </div>
@@ -145,7 +173,12 @@
                 <h5 id="exampleModalLabel" class="modal-title">
                   <span>刪除優待券</span>
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -155,8 +188,16 @@
                 優待券(刪除後將無法恢復)。
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-danger" @click="delCoupon">確認刪除</button>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  data-dismiss="modal"
+                >
+                  取消
+                </button>
+                <button type="button" class="btn btn-danger" @click="delCoupon">
+                  確認刪除
+                </button>
               </div>
             </div>
           </div>
@@ -166,8 +207,8 @@
   </div>
 </template>
 <script>
-import Pagination from '../Pagination.vue';
-import $ from 'jquery';
+import Pagination from "../Pagination.vue";
+import $ from "jquery";
 
 export default {
   components: {
@@ -176,7 +217,7 @@ export default {
   created() {
     this.getCoupons(1);
   },
-  props: ['token'],
+  props: ["token"],
   methods: {
     refreshScreen() {
       this.getCoupons(this.pages.current_page);
@@ -184,24 +225,18 @@ export default {
     getCoupons(page = 1) {
       this.isLoading = true;
 
-      //let api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/ec/orders?page=${page}`;
       const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/coupons?page=${page}`;
 
       this.$http
         .get(api)
         .then((response) => {
           this.isLoading = false;
-          //console.log(response);
+          // console.log(response);
           console.log(response.data.data);
-          //this.orders = JSON.parse(JSON.stringify(response.data.data));
           this.orders = response.data.data;
 
           this.pages.current_page = response.data.meta.pagination.current_page;
           this.pages.total_pages = response.data.meta.pagination.total_pages;
-          //this.pages.total_pages = 5;
-
-          //this.pages.current_page = 2;
-          //this.pages.total_pages = 5;
 
           console.log(this.orders);
         })
@@ -213,12 +248,12 @@ export default {
     updateCoupon() {
       // newly added
       console.log(this.tempCoupon);
-      // if (this.tempCoupon.is_enabled == 1) {
+      // if (this.tempC oupon.is_enabled == 1) {
       //   this.tempCoupon.enabled = true;
       // } else {
       //   this.tempCoupon.enabled = false;
       //      }
-      this.tempCoupon.deadline_at = this.deadline.toISOString().split('T')[0];
+      this.tempCoupon.deadline_at = this.deadline.toISOString().split("T")[0];
       /*
       this.tempCoupon.deadline_at =
         this.deadline.getFullYear() +
@@ -227,26 +262,26 @@ export default {
         '-' +
         this.deadline.getDate();
         */
-      //this.tempCoupon.deadline_at = '2020-08-23';
-      this.tempCoupon.deadline_at = this.tempCoupon.deadline_at + ' 23:59:59';
+      // this.tempCoupon.deadline_at = '2020-08-23';
+      this.tempCoupon.deadline_at = this.tempCoupon.deadline_at + " 23:59:59";
       var api;
       switch (this.isNew) {
         case true: // add new product
-          api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/coupon`;
-          //api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/admin/ec/product`;
+          api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/cou pon`;
+          // api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/admin/ec/product`;
           this.$http
             .post(api, this.tempCoupon)
             .then((response) => {
               console.log(this.tempCoupon);
-              //this.orders.push(this.tempCoupon);
-              $('#productModal').modal('hide');
+              // this.orders.push(this.tempCoupon);
+              $("#pro ductModal").modal("hide");
               this.refreshScreen();
             })
             .catch((error) => {
               console.log(error);
               alert(error.response.data.message);
               /*
-              for (err in error.response.data.errors) {
+              for (err in  error.response.data.errors) {
                 alert(err);
                 alert(err.message);
                 console.log(err);
@@ -257,12 +292,12 @@ export default {
           break;
         case false: // edit product
           api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/coupon/${this.tempCoupon.id}`;
-          //api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/admin/ec/product/${this.tempCoupon.id}`;
+          // api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/admin/ec/product/${this.tempCoupon.id}`;
           /*
           console.log("xxx");
           console.log(this.tempCoupon);
           console.log(Array.isArray(this.tempCoupon.imageUrl));
-          if (!Array.isArray(this.tempCoupon.imageUrl)) {
+          if (!Array.isArray(this.tempCoupo n.imageUrl)) {
             this.tempCoupon.imageUrl[0] = this.tempCoupon.imageUrl;
           }
           console.log(this.tempCoupon);
@@ -271,9 +306,9 @@ export default {
           this.$http
             .patch(api, this.tempCoupon)
             .then((response) => {
-              //console.log(this.tempCoupon);
+              // console.log(this.tempCoupon);
               this.refreshScreen();
-              $('#productModal').modal('hide');
+              $("#productModal").modal("hide");
             })
             .catch((error) => {
               console.log(error);
@@ -281,7 +316,7 @@ export default {
             });
 
           /*
-          for (let i = 0; i < this.orders.length; i++) {
+          for ( let i = 0; i < this.orders.length; i++) {
             if (this.orders[i].id == this.tempCoupon.id) {
               //console.log(i);
               this.orders[i] = this.tempCoupon;
@@ -295,33 +330,33 @@ export default {
           this.$set(this.orders, this.tempIndex, this.tempCoupon);
           break;
       }
-      //console.log(this.orders);
+      // console.log(this.orders);
     },
     openModal(isNew, item, index) {
       this.tempIndex = index;
       console.log(this.tempIndex);
       switch (isNew) {
-        case 'new':
-          this.title = '新增優待券';
+        case "new":
+          this.title = "新增優待券";
           this.tempCoupon = {};
           this.isNew = true;
           this.deadline = new Date();
           this.tempCoupon.enabled = false;
-          $('#productModal').modal('show');
+          $("#productModal").modal("show");
           break;
-        case 'edit':
-          this.title = '編輯優待券';
+        case "edit":
+          this.title = "編輯優待券";
           this.tempCoupon = Object.assign({}, item);
           this.isNew = false;
-          //console.log('aaa');
-          //console.log(item);
-          //console.log(item.deadline.datetime);
+          // console.log('aaa');
+          // console.log(item);
+          // console.log(item.deadline.datetime);
           this.deadline = new Date(item.deadline.datetime);
-          //console.log(this.deadline);
-          $('#productModal').modal('show');
+          // console.log(this.deadline);
+          $("#productModal").modal("show");
           break;
-        case 'delete':
-          $('#delCouponModal').modal('show');
+        case "delete":
+          $("#delCouponModal").modal("sho w");
           this.tempCoupon = Object.assign({}, item);
           break;
         default:
@@ -333,13 +368,13 @@ export default {
       var api;
 
       api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/coupon/${this.tempCoupon.id}`;
-      //api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/admin/ec/product/${this.tempCoupon.id}`;
+      // api = `https://course-ec-api.hexschool.io/api/${this.user.uuid}/admin/ec/product/${this.tempCoupon.id}`;
       this.$http
         .delete(api, this.tempCoupon)
         .then((response) => {
-          //this.orders.splice(this.tempIndex, 1);
-          //console.log(this.orders);
-          $('#delCouponModal').modal('hide');
+          // this.orders.splice(this.tempIndex, 1);
+          // console.log(this.orders);
+          $("#d elCouponModal").modal("hide");
           this.refreshScreen();
         })
         .catch((error) => {
@@ -347,9 +382,8 @@ export default {
           alert(error.response.data.message);
         });
 
-      // newly added
       /*
-      for (let i = 0; i < this.orders.length; i++) {
+      for (let i = 0; i < t his.orders.length; i++) {
         if (this.orders[i].id == this.tempCoupon.id) {
           console.log(i);
           this.orders.splice(i, 1);
@@ -360,21 +394,21 @@ export default {
   },
   data() {
     return {
-      deadline: new Date('2011-04-11T10:20:30Z'),
+      deadline: new Date("2011-04-11T10:20:30Z"),
       isLoading: false,
-      title: '',
+      title: "",
       orders: [],
       tempCoupon: {
-        code: '',
-        title: '',
+        code: "",
+        title: "",
         percent: 0,
         enabled: false,
-        deadline_at: '',
+        deadline_at: "",
       },
       tempIndex: 0,
       user: {
-        token: '',
-        uuid: '',
+        token: "",
+        uuid: "",
       },
       pages: { current_page: 1, total_pages: 0 },
     };

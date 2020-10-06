@@ -17,9 +17,14 @@
         class="page-item"
         :class="{ active: item === pages.current_page }"
       >
-        <a class="page-link" href="#" @click.prevent="emitPages(item)">{{ item }}</a>
+        <a class="page-link" href="#" @click.prevent="emitPages(item)">{{
+          item
+        }}</a>
       </li>
-      <li class="page-item" :class="{ disabled: pages.current_page === pages.total_pages }">
+      <li
+        class="page-item"
+        :class="{ disabled: pages.current_page === pages.total_pages }"
+      >
         <a
           class="page-link"
           href="#"
@@ -42,7 +47,7 @@ export default {
    * 主要接受由外(Products)向內(pagination)傳遞的分頁物件，意指在 getProducts 取得的分頁物件
    */
   props: {
-    pages: {}
+    pages: {},
   },
   methods: {
     /**
@@ -51,8 +56,8 @@ export default {
      */
     emitPages(item) {
       // 透過 emit 向外傳遞我們點的分頁並觸發外層的 getProducts
-      this.$emit('emit-pages', item);
-    }
-  }
+      this.$emit("emit-pages", item);
+    },
+  },
 };
 </script>

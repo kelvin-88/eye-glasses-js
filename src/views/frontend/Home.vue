@@ -4,9 +4,7 @@
       class="row featurette mt-4 home-banner link-image"
       @click="showProducts"
     >
-      <div class="col-10 mx-auto text-center">
-        <p class="text-white home-banner-text">春夏眼鏡系列<br />現已登場</p>
-      </div>
+      <div class="text-white home-banner-text">春夏眼鏡系列<br />現已登場</div>
     </div>
     <div class="col-10 mx-auto">
       <div class="row featurette mt-4">

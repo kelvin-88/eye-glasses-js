@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-6 col-md-4 col-lg-3">
+    <div class="col-5 col-md-4 col-lg-2">
       <img
         style="height: 15vh"
         class="img-fluid"
@@ -8,51 +8,61 @@
         @click="showProduct(item)"
       />
     </div>
-    <div v-if="false" class="col-1">
-      <p class="card-title">{{ item.product.category }}</p>
-    </div>
-    <div class="col-6 col-md-5 col-lg-4">
-      <h4 class="card-text">{{ item.product.title }}</h4>
-    </div>
-    <div class="col-6 col-md-3 col-lg-2">
-      <h5 class="card-text">{{ item.quantity }} x ${{ item.product.price }}</h5>
-    </div>
-    <div class="col-6 col-md-3 col-lg-2">
-      <td class="align-middle">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <button
-              class="btn btn-outline-primary"
-              type="button"
-              @click="quantityUpdata(item.product.id, item.quantity + 1)"
-            >
-              +
-            </button>
-          </div>
-          <input
-            id="qty"
-            type="text"
-            class="form-control text-center"
-            readonly
-            style="background: white"
-            :value="item.quantity"
-            @keyup.enter="quantityUpdata(item.product.id, $event.target.value)"
-          />
-          <div class="input-group-append">
-            <button
-              class="btn btn-outline-primary"
-              type="button"
-              @click="quantityUpdata(item.product.id, item.quantity - 1)"
-              :disabled="item.quantity === 1"
-            >
-              -
-            </button>
-          </div>
-          <button @click="deleteCart(item)">
-            <i class="fas fa-trash-alt"></i>
-          </button>
+    <div class="col-7 col-md-8 col-lg-10">
+      <div class="row">
+        <div class="col-12 col-md-4 col-lg-2">
+          <h5 class="card-text">{{ item.product.title }}</h5>
         </div>
-      </td>
+        <div class="col-12 col-md-8 col-lg-4">
+          <h5 class="card-text">{{ item.product.content }}</h5>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-2">
+          <td class="align-middle">
+            <div class="input-group" style="min-width: 150px">
+              <div class="input-group-prepend">
+                <button
+                  class="btn btn-outline-primary"
+                  type="button"
+                  @click="quantityUpdata(item.product.id, item.quantity + 1)"
+                >
+                  +
+                </button>
+              </div>
+              <input
+                id="qty"
+                type="text"
+                class="form-control text-center"
+                readonly
+                style="background: white"
+                :value="item.quantity"
+                @keyup.enter="
+                  quantityUpdata(item.product.id, $event.target.value)
+                "
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-outline-primary"
+                  type="button"
+                  @click="quantityUpdata(item.product.id, item.quantity - 1)"
+                  :disabled="item.quantity === 1"
+                >
+                  -
+                </button>
+              </div>
+              <button @click="deleteCart(item)">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </td>
+        </div>
+
+        <div class="col-12 col-md-8 col-lg-3 text-right">
+          <h5 class="card-text">
+            {{ item.quantity }} x ${{ item.product.price }}
+          </h5>
+        </div>
+      </div>
     </div>
   </div>
 </template>

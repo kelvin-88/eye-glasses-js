@@ -24,7 +24,7 @@
       </div>
       <div class="col-lg-5 mt-4">
         <div class="d-flex flex-column h-100">
-          <div class="mt-2">
+          <div class="mx-2">
             <h3 class="card-title">{{ product.title }}</h3>
           </div>
           <div
@@ -36,12 +36,12 @@
             </a>
           </div>
 
-          <p class="card-text text-muted">
+          <p class="card-text text-muted mx-2">
             <span class="h5"> {{ product.content }}</span>
           </p>
 
           <p class="card-subtitle h5 mt-2" v-html="product.description"></p>
-          <div class="mt-auto mb-4">
+          <div class="mt-auto mx-2 mb-4">
             <div class="row">
               <div class="col-lg-7 mt-2">
                 <div class="row">
