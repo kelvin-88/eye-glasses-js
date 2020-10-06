@@ -1,98 +1,67 @@
 <template>
   <div id="app">
     <loading :active.sync="isLoading"></loading>
-
-    <div id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">大大眼鏡</a>
-      <ul class="navbar-nav mr-auto">
-        <div class="collapse navbar-collapse" id="navbarColor03">
-          <li class="nav-item active">
-            <router-link class="nav-link" to="/">回首頁</router-link>
-          </li>
-          <li class="nav-item active">
-            <router-link class="nav-link" to="/products">眼鏡</router-link>
-          </li>
-          <li v-if="false" class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >物料</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li class="nav-item active">
-                <router-link
-                  class="nav-link"
-                  :to="{ name: 'Products', params: { material: '所有物料' }}"
-                >所有物料</router-link>
-              </li>
-              <li class="nav-item active">
-                <router-link
-                  class="nav-link"
-                  :to="{ name: 'Products', params: { material: '樹脂' }}"
-                >樹脂</router-link>
-              </li>
-              <li class="nav-item active">
-                <router-link
-                  class="nav-link"
-                  :to="{ name: 'Products', params: { material: '塑膠' }}"
-                >塑膠</router-link>
-              </li>
-              <li class="nav-item active">
-                <router-link
-                  class="nav-link"
-                  :to="{ name: 'Products', params: { material: '金屬' }}"
-                >金屬</router-link>
-              </li>
-              <li class="nav-item active">
-                <router-link
-                  class="nav-link"
-                  :to="{ path: 'Products', query: { material: '樹脂' }}"
-                >樹脂</router-link>
-              </li>
-              <li class="nav-item active">
-                <router-link
-                  class="nav-link"
-                  :to="{ path: 'Products', query: { material: '塑膠' }}"
-                >塑膠</router-link>
-              </li>
-              <li class="nav-item active">
-                <router-link
-                  class="nav-link"
-                  :to="{ path: 'Products', query: { material: '金屬' }}"
-                >金屬</router-link>
-              </li>
-            </div>
-          </li>
-          <li class="nav-item active">
-            <router-link class="nav-link" to="/about">關于我們</router-link>
-          </li>
+    <div class="content">
+      <div id="nav" class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">
+          <img src="@/assets/logo.png" width="100" height="100" alt="" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#myNavbar,#myNavbarEnd"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <router-link class="nav-link" to="/">首頁</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/products">眼鏡</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/lens">鏡片</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/about">關於我們</router-link>
+            </li>
+          </ul>
         </div>
-      </ul>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <router-link class="nav-link" to="/favorites">
-              <i class="far fa-heart"></i>
-            </router-link>
-          </li>
-          <li class="nav-item active">
-            <router-link class="nav-link" to="/cart">
-              <i class="fas fa-shopping-cart">({{cartItems}})</i>
-            </router-link>
-          </li>
-        </ul>
+        <div
+          class="collapse navbar-collapse justify-content-end navbar-icons-width"
+          id="myNavbarEnd"
+        >
+          <ul class="navbar-nav mx-0">
+            <li v-if="false" class="nav-item">
+              <router-link class="nav-link" to="/admin">登入</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/favorites">
+                <i class="far fa-heart"></i>
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/cart">
+                <i class="fas fa-shopping-cart">({{ cartItems }})</i>
+              </router-link>
+            </li>
+          </ul>
+        </div>
       </div>
+
+      <router-view />
     </div>
 
-    <router-view />
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">&copy;2020 大大眼鏡</span>
-        <p></p>
+    <footer class="footer mt-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-10 mx-auto text-center">
+            <span class="text-muted">&copy;2020 大大眼鏡</span>
+          </div>
+        </div>
       </div>
     </footer>
   </div>
@@ -159,6 +128,9 @@ export default {
 
 @import "./assets/main";
 @import url("https://fonts.googleapis.com/css?family=Proza+Libre");
+@import url("https://fonts.googleapis.com/css2?family=Tangerine&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap");
 
 // #app {
 //   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -186,12 +158,18 @@ export default {
   font-weight: 800;
   font-size: 200%;
 }
+// .footer {
+//   position: fixed;
+//   left: 0;
+//   bottom: 0;
+//   width: 100%;
+//   color: gray;
+//   text-align: center;
+// }
+.content {
+  min-height: calc(100vh - 50px);
+}
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  color: gray;
-  text-align: center;
+  height: 30px;
 }
 </style>

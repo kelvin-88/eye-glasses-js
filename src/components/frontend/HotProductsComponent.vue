@@ -1,40 +1,53 @@
 <template>
-  <div class="container">
-    <h2 class="mt-4" style="text-align: center!important;">暢銷眼鏡</h2>
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div
-          v-for="product in tempProducts"
-          v-bind:key="product.id"
-          :class="{'carousel-item':true, 'active':(firstTempProduct == product)}"
-        >
-          <!--img class="d-block w-100" :src="product.imageUrl[0]" :alt="product.id" /-->
-          <Product
-            @showProduct="showProduct"
-            :product="product"
-            :showShoppingCart="false"
-            :url="product.imageUrl[0]"
-          />
+  <div class="container-fluid">
+    <div class="col-12 col-md-10 col-lg-8 mx-auto">
+      <h2 class="mt-4" style="text-align: center !important">暢銷眼鏡</h2>
+      <div
+        id="carouselExampleControls"
+        class="carousel slide m-2"
+        data-ride="carousel"
+      >
+        <div class="row">
+          <div class="col-12 col-md-10 col-lg-8 mx-auto">
+            <div class="carousel-inner shadow-sm">
+              <div
+                v-for="product in tempProducts"
+                v-bind:key="product.id"
+                :class="{
+                  'carousel-item': true,
+                  active: firstTempProduct == product,
+                }"
+              >
+                <!--img class="d-block w-100" :src="product.imageUrl[0]" :alt="product.id" /-->
+                <Product
+                  @showProduct="showProduct"
+                  :product="product"
+                  :showShoppingCart="false"
+                  :url="product.imageUrl[0]"
+                />
+              </div>
+            </div>
+          </div>
         </div>
+        <a
+          class="carousel-control-prev"
+          href="#carouselExampleControls"
+          role="button"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#carouselExampleControls"
+          role="button"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
-      <a
-        class="carousel-control-prev"
-        href="#carouselExampleControls"
-        role="button"
-        data-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a
-        class="carousel-control-next"
-        href="#carouselExampleControls"
-        role="button"
-        data-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
   </div>
 </template>
@@ -85,14 +98,20 @@ export default {
           // this.pages.current_page = 2;
           // this.pages.total_pages = 5;
 
-          this.tempProducts = this.products;
+          const fromArray = this.products;
+          for (var i = 0; i < 5; i++) {
+            const x = Math.random() * (fromArray.length - 1);
+            this.tempProducts.push(fromArray.splice(x, 1).pop());
+          }
+          // this.tempProducts = this.products;
+
           console.log("tempProducts", this.tempProducts);
           this.firstTempProduct = {};
           if (this.tempProducts.length > 0) {
             this.firstTempProduct = this.tempProducts[0];
           }
           console.log("firstProduct", this.firstTempProduct);
-          let i = 0;
+          i = 0;
           for (i = 0; i < this.tempProducts.length; i++) {
             if (i === 0) {
               this.tempProducts[i].class = "carousel-item active";
@@ -112,16 +131,16 @@ export default {
 
 <style scoped>
 .carousel-inner {
-  height: 300px;
+  /* height: 420px; */
 }
 
 .carousel .carousel-item {
-  height: 300px;
+  /* height: 300px; */
 }
 
 .carousel .carousel-item img {
-  min-height: 300px;
-  max-height: 400px;
+  /* min-height: 200px;
+  max-height: 300px; */
   object-fit: cover;
 }
 
