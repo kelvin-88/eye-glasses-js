@@ -3,7 +3,7 @@
     <Loading :active.sync="isLoading"></Loading>
     <div v-if="product.title" class="row">
       <div class="col-lg-7">
-        <img class="img-fluid" :src="product.imageUrl[0]" />
+        <img class="img-fluid rounded-image" :src="product.imageUrl[0]" />
         <div
           v-if="showShoppingCart"
           class="card-img-overlay d-flex justify-content-end"
@@ -26,14 +26,6 @@
         <div class="d-flex flex-column h-100">
           <div>
             <h3 class="card-title">{{ product.title }}</h3>
-          </div>
-          <div
-            v-if="false && showShoppingCart"
-            class="col-lg-5 mt-2 align-items-end"
-          >
-            <a @click="addToCart" class="btn btn-danger btn-sm">
-              <i class="fas fa-heart"></i> 加入收藏夾
-            </a>
           </div>
 
           <p class="card-text text-muted">

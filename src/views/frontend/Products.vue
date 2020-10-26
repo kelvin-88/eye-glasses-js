@@ -2,8 +2,8 @@
   <div class="home">
     <!--Product title="abc" /-->
     <Loading :active.sync="isLoading"></Loading>
-    <div class="row wrap">
-      <div class="col-10 col-md-4 col-lg-2 mx-auto my-3 px-4 text-capitalize">
+    <div class="row wrap no-gutters mt-2 mb-2">
+      <div class="col-10 col-md-4 col-lg-2 mx-auto text-capitalize">
         <span class="h3" style="font-weight: bold">系列</span>
         <div
           v-for="category in categories"
@@ -18,16 +18,15 @@
           />
           <label for="category" class="mx-2">{{ category }}</label>
         </div>
-        <div class="row mt-5 px-2">
+        <div class="row mt-5 mr-2 no-gutters">
           <label for="price-range" class="h5">
-            <span class="h3" style="font-weight: bold">格價</span> $1 -
+            <span class="h3 mr-3" style="font-weight: bold">格價</span> $1 -
             $10,000</label
           >
           <input
             min="1"
             max="10000"
             type="range"
-            id="price-range"
             v-model="priceRange"
             @change="filterProducts"
             class="form-control-range products-range"
@@ -36,7 +35,7 @@
         </div>
       </div>
 
-      <div class="col-10 col-md-8 col-lg-10 mx-auto my-3">
+      <div class="col-10 col-md-8 col-lg-10 mx-auto">
         <div class="row no-gutters">
           <div
             class="col-lg-4 col-sm-6 p-2 products"

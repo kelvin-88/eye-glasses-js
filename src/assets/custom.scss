@@ -30,8 +30,9 @@ $secondary: yellow;
 }
 
 .rounded-image {
-    border-top-left-radius: calc(1.25rem - 1px);
-    border-top-right-radius: calc(1.25rem - 1px);
+    // border-top-left-radius: calc(1.25rem - 1px);
+    // border-top-right-radius: calc(1.25rem - 1px);
+    border-radius: 2px;
 }
 
 .link-image {
@@ -39,7 +40,7 @@ $secondary: yellow;
 }
 .home-banner {
   min-height: 60vh;
-  background: url("https://images.unsplash.com/photo-1477965131329-0de8fc76b960?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80") center/cover fixed no-repeat;
+  background: url("https://hexschool-api.s3.us-west-2.amazonaws.com/custom/WCder4GWlxtPdJmEoUCx8ans8hH4kmRTpSNanchhN3pZKwIi1hFAgD0DzsleEgPg69vW7ybPKqNaB5AjzjZ9Bb2hXeFauHFkVLw8gPHmmyepGwqWJPZq9775gHscg9dZ.jpeg") center/cover fixed no-repeat;
   //font-family: 'Kaushan Script', cursive;
   font-family: 'Tangerine', cursive;
   //font-size: 64px;
@@ -142,6 +143,10 @@ $secondary: yellow;
   box-sizing: border-box;  
 }
 
+// .img-container {
+//   //height: 250px;
+//   width: 370px;
+// }
 
 .products-addToCart {
   color: $primary;
@@ -226,14 +231,33 @@ $secondary: yellow;
     text-decoration: none;
 }
 
-.lens-card {
-  transition: all 1s ease-in-out;
-}
-.lens-card:hover{
-  transform:scale(1.1); 
-   cursor: pointer;
+// shopping cart
+.shopping-cart-icon {
+  color: $primary;
+  //border: $primary solid 1px;
+  border: none;
+  background: white;
 }
 
+// .lens-card {
+//   transition: all 1s ease-in-out;
+// }
+
+// .lens-card:hover{
+//   transform:scale(1.1); 
+//    cursor: pointer;
+// }
+
+// Hot Products
+.carousel-control-prev, .carousel-control-next {
+  filter: invert(100%);
+}
+
+// .carousel-control-prev-icon, .carousel-control-next-icon  {
+//   border: black solid 1px;
+// }
+
+// Price Range
 
 input[type=range] {
   -webkit-appearance: none;

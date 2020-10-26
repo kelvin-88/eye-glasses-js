@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="wrap">
       <Loading :active.sync="isLoading"></Loading>
-      <div class="h3 mt-4"><strong>購物車</strong></div>
+      <div class="h4"><strong>購物車</strong></div>
       <hr />
       <div v-if="items.length > 0">
         <div class="row">
@@ -31,9 +31,7 @@
           >
             確認訂單
           </button>
-          <h4 class="ml-5 mt-2">
-            總計 ${{ totalAmount | toThousandSeperator }}
-          </h4>
+          <h4 class="p-2">總計 ${{ totalAmount | toThousandSeperator }}</h4>
         </div>
       </div>
       <div v-else><h4 class="mt-4">您的購物車尚未加入任何商品</h4></div>

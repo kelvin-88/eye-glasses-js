@@ -35,7 +35,7 @@
             >${{ product.price | toThousandSeperator }}</span
           >
         </div>
-        <div class="d-flex" style="flex-direction: row-reverse">
+        <div class="d-flex pb-1">
           <a
             @click.stop.prevent="addToCart"
             class="btn products-addToCart btn-lg flex-grow-1"

@@ -2,7 +2,7 @@
   <div id="app">
     <loading :active.sync="isLoading"></loading>
     <div class="content">
-      <div id="nav" class="navbar navbar-expand-lg mb-3">
+      <div id="nav" class="navbar navbar-expand-lg">
         <div class="wrap mb-2" style="display: flex">
           <a href="/">
             <img src="@/assets/logo.png" width="100" height="100" alt="Logo" />

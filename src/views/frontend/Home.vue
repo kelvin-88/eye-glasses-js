@@ -1,13 +1,10 @@
 <template>
   <div class="container-fluid marketing">
-    <div
-      class="row featurette mt-4 home-banner link-image"
-      @click="showProducts"
-    >
+    <div class="row featurette home-banner link-image" @click="showProducts">
       <div class="home-banner-text h2">春夏眼鏡系列<br />現已登場</div>
     </div>
-    <div class="col-10 mx-auto">
-      <div class="row featurette mt-4">
+    <div class="wrap">
+      <div class="row featurette mt-5">
         <div class="col-12 col-md-7 col-lg-7">
           <h2 class="featurette-heading h2 mt-2">
             國際品牌
@@ -21,17 +18,17 @@
           <img
             class="featurette-image img-fluid mx-auto link-image rounded-image"
             data-src="holder.js/500x500/auto"
-            src="https://images.unsplash.com/photo-1486125305436-b7144b0734f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-            alt="Generic placeholder image"
+            src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/xLXGAX8GMvavxlkTKh5q1jpkvQeilf3yyxr17AzsEpeJwAscQtP85q1QPLf0fHNtPaI8vi7mMM1JARMlcKyVGohhziPBcS7kyulUklkwZR5dxpEtn4u9OtDmbRdkDH7j.jpeg"
+            alt="International Brand"
           />
         </div>
       </div>
-      <div class="row featurette mt-4">
+      <div class="row featurette mt-5">
         <div class="col-12 col-md-5 col-md-5" @click="showLens">
           <img
             class="featurette-image img-fluid mx-auto link-image rounded-image"
             data-src="holder.js/500x500/auto"
-            src="https://images.unsplash.com/photo-1539036776273-021ec1d78bec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+            src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/DSW6mFICO5fiLMwll6Z22U643Ar6toD4EscDyhmFY61dpYIn8uW3PXBu8pHDzXYzmEYGqO7ZdJhE4TMqkaxbuIFQo2tfK6yATHkbFTzIszaYnC5itUDSZ8VAP6Dq6cSs.jpeg"
             alt="Eye Exam"
             style="filter: blur(1px); -webkit-filter: blur(1px)"
           />
