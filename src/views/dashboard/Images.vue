@@ -330,11 +330,12 @@ export default {
           this.isLoading = false;
           // this.orders.splice(this.tempIndex, 1);
           // console.log(this.orders);
-          $("#del ImageModal").modal("hide");
+          $("#delImageModal").modal("hide");
           this.refreshScreen();
         })
         .catch((error) => {
           this.isLoading = false;
+          $("#delImageModal").modal("hide");
           console.log(error);
           alert(error.response.data.message);
         });

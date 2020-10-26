@@ -23,26 +23,16 @@
     </div>
 
     <div class="card-body p-1">
-      <div class="card-text">
-        <div class="d-flex">
-          <div class="mr-auto p-2 align-self-center">
-            <span class="h4">{{ product.title }}</span>
-          </div>
-          <span class="p-2 original-price align-self-center"
-            >${{ product.origin_price | toThousandSeperator }}</span
-          >
-          <span class="p-2 price align-self-center"
-            >${{ product.price | toThousandSeperator }}</span
-          >
+      <div class="card-text d-flex">
+        <div class="mr-auto p-2 align-self-center">
+          <span class="h4">{{ product.title }}</span>
         </div>
-        <div class="d-flex" style="flex-direction: row-reverse">
-          <a
-            @click.stop.prevent="addToCart"
-            class="btn products-addToCart btn-lg flex-grow-1"
-          >
-            <i class="fas fa-shopping-cart"></i> 加入購物車
-          </a>
-        </div>
+        <span class="p-2 price align-self-center"
+          >${{ product.price | toThousandSeperator }}</span
+        >
+        <span class="p-2 original-price align-self-center"
+          >${{ product.origin_price | toThousandSeperator }}</span
+        >
       </div>
     </div>
   </div>
@@ -59,30 +49,6 @@ export default {
     url: String,
   },
   methods: {
-    addToCart() {
-      this.isLoading = true;
-      const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping`;
-      const data = {
-        product: this.product.id,
-        quantity: "1",
-      };
-      this.$http
-        .post(api, data)
-        .then((response) => {
-          this.isLoading = false;
-          // console.log(response);
-          console.log(response.data.data);
-          this.$bus.$emit("show-toast-message", "成功加入購物車");
-          this.$bus.$emit("update-cart", () => {});
-        })
-        .catch((error) => {
-          this.isLoading = false;
-          console.log(error.response);
-          console.log(error.response.data.errors[0]);
-          this.$bus.$emit("show-toast-error", error.response.data.errors[0]);
-          this.$bus.$emit("update-cart", () => {});
-        });
-    },
     updateFavorite(product, event) {
       // console.log("updateFavorite", product);
       // if (!this.showShoppingCart) {

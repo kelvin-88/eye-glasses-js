@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="col-10 mx-auto">
+    <div class="wrap">
       <Loading :active.sync="isLoading"></Loading>
       <div class="h4"><strong>購物車</strong></div>
       <hr />

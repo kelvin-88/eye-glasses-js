@@ -4,12 +4,12 @@
       class="row featurette mt-4 home-banner link-image"
       @click="showProducts"
     >
-      <div class="text-white home-banner-text">春夏眼鏡系列<br />現已登場</div>
+      <div class="home-banner-text h2">春夏眼鏡系列<br />現已登場</div>
     </div>
     <div class="col-10 mx-auto">
       <div class="row featurette mt-4">
         <div class="col-12 col-md-7 col-lg-7">
-          <h2 class="featurette-heading mt-2">
+          <h2 class="featurette-heading h2 mt-2">
             國際品牌
             <span class="text-muted"></span>
           </h2>
@@ -38,7 +38,7 @@
         </div>
 
         <div class="col-12 col-md-7 col-lg-7">
-          <h2 class="featurette-heading mt-2">
+          <h2 class="featurette-heading h2 mt-2">
             專業的驗配
             <span class="text-muted">個人化體驗 專業服務</span>
           </h2>
