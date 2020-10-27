@@ -1,53 +1,58 @@
 <template>
-  <div class="card shadow-sm link-image" @click="showProduct">
-    <Loading :active.sync="isLoading"></Loading>
-    <div v-if="product.title" class="row">
-      <div class="col-md-12 col-lg-7">
-        <img class="img-fluid rounded-image" :src="product.imageUrl[0]" />
-        <div
-          v-if="showShoppingCart"
-          class="card-img-overlay d-flex justify-content-end"
-        >
-          <a
-            href="#"
-            class="card-link text-danger like mr-3"
-            @click.stop.prevent="updateFavorite(product)"
+  <div class="content">
+    <div class="card shadow-sm link-image" @click="showProduct">
+      <Loading :active.sync="isLoading"></Loading>
+      <div v-if="product.title" class="row">
+        <div class="col-md-12 col-lg-7">
+          <img class="img-fluid rounded-image" :src="product.imageUrl[0]" />
+          <div
+            v-if="showShoppingCart"
+            class="card-img-overlay d-flex justify-content-end"
           >
-            <div v-if="favorite">
-              <i class="fas fa-heart fa-2x"></i>
-            </div>
-            <div v-else>
-              <i class="far fa-heart fa-2x"></i>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-12 col-lg-5 mt-4">
-        <div class="d-flex flex-column h-100">
-          <div>
-            <h3 class="card-title">{{ product.title }}</h3>
-          </div>
-
-          <p class="card-text text-muted">
-            <span class="h5"> {{ product.content }}</span>
-          </p>
-
-          <p class="card-subtitle h5 mt-2" v-html="product.description"></p>
-          <div class="mt-auto mb-4">
-            <div class="row">
-              <div v-if="showShoppingCart" class="col-md-12 col-lg-5 mt-2">
-                <a @click="addToCart" class="btn btn-lg product-addToCart">
-                  <i class="fas fa-shopping-cart"></i> 加入購物車
-                </a>
+            <a
+              href="#"
+              class="card-link text-danger like mr-3"
+              @click.stop.prevent="updateFavorite(product)"
+            >
+              <div v-if="favorite">
+                <i class="fas fa-heart fa-2x"></i>
               </div>
-              <div class="col-md-12 col-lg-7 align-items-end mt-2">
-                <div class="row d-flex">
-                  <span class="ml-auto original-price mt-1"
-                    >${{ product.origin_price | toThousandSeperator }}</span
-                  >
-                  <span class="ml-3 price mr-5"
-                    >${{ product.price | toThousandSeperator }}</span
-                  >
+              <div v-else>
+                <i class="far fa-heart fa-2x"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-5 mt-4">
+          <div class="d-flex flex-column h-100">
+            <div>
+              <h3 class="card-title">{{ product.title }}</h3>
+            </div>
+
+            <p class="card-text text-muted">
+              <span class="h5"> {{ product.content }}</span>
+            </p>
+
+            <p class="card-subtitle h5 mt-2" v-html="product.description"></p>
+            <div class="mt-auto mb-4">
+              <div class="row">
+                <div v-if="showShoppingCart" class="col-md-12 col-lg-5 mt-2">
+                  <a @click="addToCart" class="btn btn-lg product-addToCart">
+                    <i class="fas fa-shopping-cart"></i> 加入購物車
+                  </a>
+                </div>
+                <div
+                  class="align-items-end mt-2"
+                  :class="showShoppingCart ? 'col-md-12 col-lg-7' : 'col-12'"
+                >
+                  <div class="row d-flex">
+                    <span class="ml-auto original-price mt-1"
+                      >${{ product.origin_price | toThousandSeperator }}</span
+                    >
+                    <span class="ml-3 price mr-5"
+                      >${{ product.price | toThousandSeperator }}</span
+                    >
+                  </div>
                 </div>
               </div>
             </div>

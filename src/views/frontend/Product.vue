@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <div class="container">
+  <div class="content">
+    <div class="wrap">
       <Loading :active.sync="isLoading"></Loading>
       <Product :product="product" :showShoppingCart="true" />
     </div>
