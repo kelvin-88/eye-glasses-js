@@ -32,9 +32,11 @@ $cyan:    #3498db !default;
 $primary:      #E91363;
 $secondary:     $gray-600 !default;
 $success:       $green !default;
-$info:          $cyan !default;
+//$info:          $cyan !default;
+$info:          #E91363 !default;
 $warning:       $yellow !default;
-$danger:        $red !default;
+//$danger:        $red !default;
+$danger:        #E91363 !default;
 $light:         $gray-200 !default;
 $dark:          $gray-700 !default;
 
