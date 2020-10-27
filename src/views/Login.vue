@@ -1,38 +1,39 @@
 <template>
-  <div class="about">
-    <h1>登入</h1>
+  <div class="content">
+    <div class="wrap">
+      <h2 class="ml-3 mt-4">登入</h2>
 
-    <div class="container">
-      <form class="form-signin" @submit.prevent="signin">
-        <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
-        <div class="form-group">
-          <label for="inputEmail" class="sr-only">Email address</label>
-          <input
-            id="inputEmail"
-            v-model="user.email"
-            type="email"
-            class="form-control"
-            placeholder="Email address"
-            required
-            autofocus
-          />
-        </div>
-        <div class="form-group">
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input
-            id="inputPassword"
-            v-model="user.password"
-            type="password"
-            class="form-control"
-            placeholder="Password"
-            required
-          />
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">
-          登入
-        </button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2020~∞ - 六角學院</p>
-      </form>
+      <div class="container">
+        <form class="form-signin" @submit.prevent="signin">
+          <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
+          <div class="form-group">
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input
+              id="inputEmail"
+              v-model="user.email"
+              type="email"
+              class="form-control"
+              placeholder="Email address"
+              required
+              autofocus
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input
+              id="inputPassword"
+              v-model="user.password"
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">
+            登入
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 </template>

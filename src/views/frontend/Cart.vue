@@ -24,7 +24,7 @@
           <div class="row">
             <hr style="width: 100%; text-align: left; margin-left: 0" />
           </div>
-          <div class="d-flex flex-row justify-content-end w-100">
+          <div class="d-flex flex-row justify-content-end w-100 mb-2">
             <button
               type="submit"
               class="btn btn-primary btn-lg px-4 mr-2"
