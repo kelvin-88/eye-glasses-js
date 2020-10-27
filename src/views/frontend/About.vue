@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="content">
     <div class="wrap">
       <div class="row no-gutters">
         <div class="col-12 col-md-8 col-lg-6 p-0">

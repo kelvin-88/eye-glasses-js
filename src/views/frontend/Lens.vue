@@ -1,24 +1,26 @@
 <template>
-  <div class="wrap">
-    <div class="h2 my-4"><strong>關於鏡片</strong></div>
+  <div class="content">
+    <div class="wrap">
+      <div class="h2 my-4"><strong>關於鏡片</strong></div>
 
-    <div v-for="(len, index) in lens" :key="index">
-      <div class="card mb-5 lens-card">
-        <div class="card-header h3">
-          <img
-            src="@/assets/lens-blue.png"
-            class="mr-2"
-            style="width: 60px; height: 60px"
-            alt=""
-          />{{ len.title }}
-        </div>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p>{{ len.title2 }}</p>
-            <footer class="blockquote-footer">
-              {{ len.content }}
-            </footer>
-          </blockquote>
+      <div v-for="(len, index) in lens" :key="index">
+        <div class="card mb-5 lens-card">
+          <div class="card-header h3">
+            <img
+              src="@/assets/lens-blue.png"
+              class="mr-2"
+              style="width: 60px; height: 60px"
+              alt=""
+            />{{ len.title }}
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>{{ len.title2 }}</p>
+              <footer class="blockquote-footer">
+                {{ len.content }}
+              </footer>
+            </blockquote>
+          </div>
         </div>
       </div>
     </div>
