@@ -2,7 +2,7 @@
   <div class="card shadow-sm link-image" @click="showProduct">
     <Loading :active.sync="isLoading"></Loading>
     <div v-if="product.title" class="row">
-      <div class="col-md-12 col-lg-7">
+      <div class="col-lg-7">
         <img class="img-fluid rounded-image" :src="product.imageUrl[0]" />
         <div
           v-if="showShoppingCart"
@@ -22,7 +22,7 @@
           </a>
         </div>
       </div>
-      <div class="col-md-12 col-lg-5 mt-4">
+      <div class="col-lg-5 mt-4">
         <div class="d-flex flex-column h-100">
           <div>
             <h3 class="card-title">{{ product.title }}</h3>
@@ -35,12 +35,12 @@
           <p class="card-subtitle h5 mt-2" v-html="product.description"></p>
           <div class="mt-auto mb-4">
             <div class="row">
-              <div v-if="showShoppingCart" class="col-md-12 col-lg-5 mt-2">
+              <div v-if="showShoppingCart" class="col-lg-5 mt-2">
                 <a @click="addToCart" class="btn btn-lg product-addToCart">
                   <i class="fas fa-shopping-cart"></i> 加入購物車
                 </a>
               </div>
-              <div class="col-md-12 col-lg-7 align-items-end mt-2">
+              <div class="col-lg-7 align-items-end mt-2">
                 <div class="row d-flex">
                   <span class="ml-auto original-price mt-1"
                     >${{ product.origin_price | toThousandSeperator }}</span

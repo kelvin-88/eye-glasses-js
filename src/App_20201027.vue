@@ -2,60 +2,55 @@
   <div id="app">
     <loading :active.sync="isLoading"></loading>
     <div class="content">
-      <div class="header">
-        <div class="wrap">
-          <div id="nav" class="navbar navbar-expand-lg">
-            <a href="/">
-              <img src="@/assets/logo.png" width="100" height="75" alt="Logo" />
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#myNavbar,#myNavbarEnd"
-            >
-              <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                  <router-link class="nav-link" to="/products"
-                    >眼鏡</router-link
-                  >
-                </li>
-                <li class="nav-item">
-                  <router-link class="nav-link" to="/lens">鏡片</router-link>
-                </li>
-                <li class="nav-item">
-                  <router-link class="nav-link" to="/about"
-                    >關於我們</router-link
-                  >
-                </li>
-              </ul>
-            </div>
-            <div
-              class="collapse navbar-collapse justify-content-end navbar-icons-width"
-              id="myNavbarEnd"
-            >
-              <ul class="navbar-nav mx-0">
-                <li class="nav-item">
-                  <router-link class="nav-link" to="/admin">登入</router-link>
-                </li>
-                <li class="nav-item">
-                  <router-link class="nav-link" to="/favorites">
-                    <i class="far fa-heart"></i>
-                  </router-link>
-                </li>
-                <li class="nav-item pr-0">
-                  <router-link class="nav-link" to="/cart">
-                    <i class="fas fa-shopping-cart">({{ cartItems }})</i>
-                  </router-link>
-                </li>
-              </ul>
-            </div>
+      <div id="nav" class="navbar navbar-expand-lg">
+        <div class="wrap mb-2" style="display: flex">
+          <a href="/">
+            <img src="@/assets/logo.png" width="100" height="100" alt="Logo" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#myNavbar,#myNavbarEnd"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <router-link class="nav-link" to="/products">眼鏡</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/lens">鏡片</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/about">關於我們</router-link>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="collapse navbar-collapse justify-content-end navbar-icons-width"
+            id="myNavbarEnd"
+          >
+            <ul class="navbar-nav mx-0">
+              <li class="nav-item">
+                <router-link class="nav-link" to="/admin">登入</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/favorites">
+                  <i class="far fa-heart"></i>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/cart">
+                  <i class="fas fa-shopping-cart">({{ cartItems }})</i>
+                </router-link>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
+
       <router-view />
     </div>
 

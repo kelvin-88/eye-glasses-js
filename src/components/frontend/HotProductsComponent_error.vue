@@ -6,7 +6,7 @@
         id="carouselExampleControls"
         class="carousel slide"
         data-ride="carousel"
-        data-interval="500000"
+        data-interval="5000"
       >
         <div class="row">
           <div class="col-12 col-md-10 col-lg-8 mx-auto">

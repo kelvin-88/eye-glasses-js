@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    <h2 class="text-center m-3">關於鏡片</h2>
+    <div class="h2 my-4"><strong>關於鏡片</strong></div>
 
     <div v-for="(len, index) in lens" :key="index">
       <div class="card mb-5 lens-card">

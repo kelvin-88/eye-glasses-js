@@ -1,9 +1,9 @@
 <template>
-  <div class="home">
+  <div class="products">
     <!--Product title="abc" /-->
     <Loading :active.sync="isLoading"></Loading>
     <div class="row wrap no-gutters mt-2 mb-2">
-      <div class="col-10 col-md-4 col-lg-2 mx-auto text-capitalize">
+      <div class="col-md-12 col-lg-2">
         <span class="h3" style="font-weight: bold">系列</span>
         <div
           v-for="category in categories"
@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <div class="col-10 col-md-8 col-lg-10 mx-auto">
+      <div class="col-md-12 col-lg-10">
         <div class="row no-gutters">
           <div
             class="col-lg-4 col-sm-6 p-2 products"

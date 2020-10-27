@@ -17,15 +17,15 @@ $secondary: yellow;
 }
 
 .wrap {
-  width: 1400px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
-.h, .h1, .h2, .h3 {
+h1, h2, h3, .h1, .h2, .h3 {
   color: $primary;
 }
 
-.navbar {
+.navbar, .header {
   background: $primary;
 }
 
@@ -46,6 +46,13 @@ $secondary: yellow;
   //font-size: 64px;
   
 }
+// .home-banner-brand {
+//   min-height: 30vh;
+//   background: url("https://hexschool-api.s3.us-west-2.amazonaws.com/custom/xLXGAX8GMvavxlkTKh5q1jpkvQeilf3yyxr17AzsEpeJwAscQtP85q1QPLf0fHNtPaI8vi7mMM1JARMlcKyVGohhziPBcS7kyulUklkwZR5dxpEtn4u9OtDmbRdkDH7j.jpeg") center/cover fixed no-repeat;
+//   //height: 218px;
+//   //background-size: cover;
+// }
+
 .home-banner-text {
   // position: absolute;  
   // top: 50%;                         /* vertical alignment */
@@ -53,11 +60,31 @@ $secondary: yellow;
   // transform: translate(0%, -50%); /* precise centering; see link below */
   // text-align: center
   position: absolute;
-  top: 50%;
-  left: 80%;
+  top: 40%;
+  left: 85%;
   width:400px;  
   transform: translate(-50%, -50%);
   font-size: 48px;
+  font-weight: bold;
+  color:white;
+
+}
+
+.home-banner-desc {
+  // position: absolute;  
+  // top: 50%;                         /* vertical alignment */
+  // left:70%;
+  // transform: translate(0%, -50%); /* precise centering; see link below */
+  // text-align: center
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  width:400px;  
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+
 }
 
 @media only screen and (max-width: 992px){ 
@@ -87,7 +114,7 @@ $secondary: yellow;
 
 .navbar-icons-width {
   max-width: 280px;
-  min-width: 180px
+  min-width: 100px
 }
 
 .router-link-exact-active {
