@@ -2,7 +2,9 @@
   <div class="content">
     <div class="wrap">
       <Loading :active.sync="isLoading"></Loading>
-      <Product :product="product" :showShoppingCart="true" />
+      <div class="product">
+        <Product :product="product" :showShoppingCart="true" />
+      </div>
     </div>
   </div>
 </template>

@@ -222,6 +222,11 @@ h1, h2, h3, .h1, .h2, .h3 {
   font-size:150%;
 }
 
+.product {
+ max-width: 1000px;
+ margin: 0 auto;
+}
+
 .products {
   // background: red;
   box-sizing: border-box;  

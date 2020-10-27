@@ -35,12 +35,12 @@
           <p class="card-subtitle h5 mt-2" v-html="product.description"></p>
           <div class="mt-auto mb-4">
             <div class="row">
-              <div v-if="showShoppingCart" class="col-md-12 col-lg-5 mt-2">
+              <div v-if="showShoppingCart" class="col-md-12 col-lg-6 mt-2">
                 <a @click="addToCart" class="btn btn-lg product-addToCart">
                   <i class="fas fa-shopping-cart"></i> 加入購物車
                 </a>
               </div>
-              <div class="col-md-12 col-lg-7 align-items-end mt-2">
+              <div class="col-md-12 col-lg-6 align-items-end mt-2">
                 <div class="row d-flex">
                   <span class="ml-auto original-price mt-1"
                     >${{ product.origin_price | toThousandSeperator }}</span
