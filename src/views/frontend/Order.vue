@@ -1,112 +1,117 @@
 <template>
-  <div class="container-fluid">
-    <div class="col-12 col-md-12 col-lg-10 mx-auto">
-      <Loading :active.sync="isLoading"></Loading>
-      <div class="mx-0" role="document">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-dark text-white">
-            <h5 id="exampleModalLabel" class="modal-title">
-              <span>訂單細節</span>
-            </h5>
-          </div>
-          <ValidationObserver v-slot="{ invalid }">
-            <!-- 表單送出改為使用 form submit 的方法 -->
-            <form @submit.prevent="submitForm">
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-12 col-md-12 col-lg-8">
-                    <div class="form-group">
-                      <ValidationProvider
-                        rules="required"
-                        v-slot="{ errors, classes }"
-                      >
-                        <label for="name">名稱</label>
-                        <input
-                          id="name"
-                          v-model="tempOrder.name"
-                          type="text"
-                          class="form-control"
-                          :class="classes"
-                          placeholder="請輸入名稱"
-                        />
-                        <span class="invalid-feedback">{{ errors[0] }}</span>
-                      </ValidationProvider>
-                    </div>
-
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
+  <div class="content">
+    <div class="container-fluid">
+      <div class="col-12 col-md-12 col-lg-10 mx-auto">
+        <Loading :active.sync="isLoading"></Loading>
+        <div class="mx-0" role="document">
+          <div class="modal-content border-0">
+            <div class="modal-header bg-dark text-white">
+              <h5 id="exampleModalLabel" class="modal-title">
+                <span>訂單細節</span>
+              </h5>
+            </div>
+            <ValidationObserver v-slot="{ invalid }">
+              <!-- 表單送出改為使用 form submit 的方法 -->
+              <form @submit.prevent="submitForm">
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-12 col-md-12 col-lg-8">
+                      <div class="form-group">
                         <ValidationProvider
-                          rules="required|email"
+                          rules="required"
                           v-slot="{ errors, classes }"
                         >
-                          <label for="email">電子信箱</label>
+                          <label for="name">名稱</label>
                           <input
-                            id="email"
-                            v-model="tempOrder.email"
-                            type="email"
+                            id="name"
+                            v-model="tempOrder.name"
+                            type="text"
                             class="form-control"
                             :class="classes"
-                            placeholder="請輸入電子信箱"
+                            placeholder="請輸入名稱"
                           />
                           <span class="invalid-feedback">{{ errors[0] }}</span>
                         </ValidationProvider>
                       </div>
-                      <div class="form-group col-md-6">
+
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <ValidationProvider
+                            rules="required|email"
+                            v-slot="{ errors, classes }"
+                          >
+                            <label for="email">電子信箱</label>
+                            <input
+                              id="email"
+                              v-model="tempOrder.email"
+                              type="email"
+                              class="form-control"
+                              :class="classes"
+                              placeholder="請輸入電子信箱"
+                            />
+                            <span class="invalid-feedback">{{
+                              errors[0]
+                            }}</span>
+                          </ValidationProvider>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <validation-provider
+                            rules="required|min:8"
+                            v-slot="{ errors, classes }"
+                          >
+                            <label for="tel">電話</label>
+                            <input
+                              id="tel"
+                              v-model="tempOrder.tel"
+                              type="tel"
+                              class="form-control"
+                              :class="classes"
+                              placeholder="請輸入電話"
+                            />
+                            <span class="invalid-feedback">{{
+                              errors[0]
+                            }}</span>
+                          </validation-provider>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
                         <validation-provider
-                          rules="required|min:8"
+                          rules="required"
                           v-slot="{ errors, classes }"
                         >
-                          <label for="tel">電話</label>
-                          <input
-                            id="tel"
-                            v-model="tempOrder.tel"
-                            type="tel"
+                          <label for="address">運送地址</label>
+                          <textarea
+                            id="address"
+                            v-model="tempOrder.address"
+                            type="text"
                             class="form-control"
                             :class="classes"
-                            placeholder="請輸入電話"
-                          />
+                            placeholder="請輸入運送地址"
+                          ></textarea>
                           <span class="invalid-feedback">{{ errors[0] }}</span>
                         </validation-provider>
                       </div>
-                    </div>
 
-                    <div class="form-group">
-                      <validation-provider
-                        rules="required"
-                        v-slot="{ errors, classes }"
-                      >
-                        <label for="address">運送地址</label>
-                        <textarea
-                          id="address"
-                          v-model="tempOrder.address"
-                          type="text"
-                          class="form-control"
-                          :class="classes"
-                          placeholder="請輸入運送地址"
-                        ></textarea>
-                        <span class="invalid-feedback">{{ errors[0] }}</span>
-                      </validation-provider>
-                    </div>
-
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <validation-provider rules="required">
-                          <label for="payment">購買方式</label>
-                          <select
-                            class="form-control"
-                            id="payment"
-                            v-model="tempOrder.payment"
-                          >
-                            <option disabled value>請選擇付款方式</option>
-                            <option>WebATM</option>
-                            <option>Barcode</option>
-                            <option>Credit</option>
-                            <option>ApplePay</option>
-                            <option>GooglePay</option>
-                          </select>
-                        </validation-provider>
-                      </div>
-                      <!--div class="form-group col-md-6">
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <validation-provider rules="required">
+                            <label for="payment">購買方式</label>
+                            <select
+                              class="form-control"
+                              id="payment"
+                              v-model="tempOrder.payment"
+                            >
+                              <option disabled value>請選擇付款方式</option>
+                              <option>WebATM</option>
+                              <option>Barcode</option>
+                              <option>Credit</option>
+                              <option>ApplePay</option>
+                              <option>GooglePay</option>
+                            </select>
+                          </validation-provider>
+                        </div>
+                        <!--div class="form-group col-md-6">
                         <label for="coupon">優惠券</label>
                         <input
                           readonly
@@ -117,85 +122,90 @@
                           placeholder="請輸入優惠券"
                         />
                       </div-->
-                    </div>
-
-                    <div class="form-group">
-                      <label for="message">備註</label>
-                      <textarea
-                        id="description"
-                        v-model="tempOrder.message"
-                        type="text"
-                        class="form-control"
-                        placeholder="請輸入備註"
-                      ></textarea>
-                    </div>
-
-                    <div class="form-row mt-4">
-                      <div class="form-group col-6 col-md-6">
-                        <button
-                          type="submit"
-                          class="btn btn-primary btn-lg"
-                          :disabled="invalid"
-                        >
-                          確認付款
-                        </button>
                       </div>
-                      <div class="form-group col-6 col-md-6 text-right">
-                        <button
-                          type="button"
-                          class="btn btn-outline-primary btn-lg"
-                          @click.prevent="$router.push('Cart')"
-                        >
-                          回到購物車
-                        </button>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div class="col-12 col-md-12 col-lg-4">
-                    <!--tr v-for="(item, index) in products" :key="item.id"-->
-                    <div class="row mt-2" v-for="item in items" :key="item.id">
-                      <div class="col-12 col-md-8 col-lg-4">
-                        <img
-                          :src="item.product.imageUrl[0]"
-                          class="img-fluid"
-                        />
+                      <div class="form-group">
+                        <label for="message">備註</label>
+                        <textarea
+                          id="description"
+                          v-model="tempOrder.message"
+                          type="text"
+                          class="form-control"
+                          placeholder="請輸入備註"
+                        ></textarea>
                       </div>
-                      <div
-                        class="col-12 col-md-10 col-lg-8"
-                        style="font-size: 10px"
-                      >
-                        <div class="form-group row">
-                          <div class="col-12 h5">
-                            {{ item.product.title }}
-                          </div>
-                          <div class="col-12 h5 text-muted">
-                            {{ item.product.content }}
-                          </div>
-                          <div class="col-12 h5 text-right">
-                            {{ item.quantity }} x ${{
-                              item.product.price | toThousandSeperator
-                            }}
-                          </div>
+
+                      <div class="form-row mt-4">
+                        <div class="form-group col-6 col-md-6">
+                          <button
+                            type="submit"
+                            class="btn btn-primary btn-lg"
+                            :disabled="invalid"
+                          >
+                            確認付款
+                          </button>
+                        </div>
+                        <div class="form-group col-6 col-md-6 text-right">
+                          <button
+                            type="button"
+                            class="btn btn-outline-primary btn-lg"
+                            @click.prevent="$router.push('Cart')"
+                          >
+                            回到購物車
+                          </button>
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <hr
-                        style="width: 100%; text-align: left; margin-left: 0"
-                      />
-                    </div>
-                    <div class="row">
-                      <h5 class="col-6 col-md-6">總計</h5>
-                      <div class="col-6 col-md-6 text-right h5">
-                        ${{ totalAmount | toThousandSeperator }}
+
+                    <div class="col-12 col-md-12 col-lg-4">
+                      <!--tr v-for="(item, index) in products" :key="item.id"-->
+                      <div
+                        class="row mt-2"
+                        v-for="item in items"
+                        :key="item.id"
+                      >
+                        <div class="col-12 col-md-8 col-lg-4">
+                          <img
+                            :src="item.product.imageUrl[0]"
+                            class="img-fluid"
+                          />
+                        </div>
+                        <div
+                          class="col-12 col-md-10 col-lg-8"
+                          style="font-size: 10px"
+                        >
+                          <div class="form-group row">
+                            <div class="col-12 h5">
+                              {{ item.product.title }}
+                            </div>
+                            <div class="col-12 h5 text-muted">
+                              {{ item.product.content }}
+                            </div>
+                            <div class="col-12 h5 text-right">
+                              {{ item.quantity }} x ${{
+                                item.product.price | toThousandSeperator
+                              }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <hr
+                          style="width: 100%; text-align: left; margin-left: 0"
+                        />
+                      </div>
+                      <div class="row">
+                        <h5 class="col-6 col-md-6">總計</h5>
+                        <div class="col-6 col-md-6 text-right h5">
+                          ${{ totalAmount | toThousandSeperator }}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </form>
-          </ValidationObserver>
+              </form>
+            </ValidationObserver>
+          </div>
         </div>
       </div>
     </div>

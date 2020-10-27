@@ -16,10 +16,9 @@ export default {
   methods: {
     logout() {
       document.cookie =
-        'hexToken=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
-      this.$router.push('/admin');
+        "hexToken=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+      this.$router.push("/admin");
     },
   },
 };
 </script>
-

@@ -6,6 +6,11 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "*",
+    name: "Home",
+    component: Home,
+  },
+  {
     path: "/",
     name: "Home",
     component: Home,
@@ -46,6 +51,14 @@ const routes = [
     component: () => import("../views/frontend/Favorites.vue"),
   },
 
+  {
+    path: '/login',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue'),
+  },
+  {
+    path: '/logout',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Logout.vue'),
+  },
   {
     path: '/admin',
     component: () => import('../views/dashboard/Dashboard.vue'),

@@ -13,13 +13,17 @@
         <table class="table mt-4">
           <thead>
             <tr>
-              <th>圖片</th>
-              <th width="120">編輯</th>
+              <th style="width: 130px">圖片</th>
+              <th style="width: 130px">URL</th>
+              <th style="width: 130px">編輯</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(item, index) in orders" :key="item.id">
-              <img :src="item.path" height="150px" width="250px" />
+              <td>
+                <img :src="item.path" height="150px" width="250px" />
+              </td>
+              <td>{{ item.path }}</td>
               <td>
                 <div class="btn-group">
                   <!--button
@@ -330,11 +334,12 @@ export default {
           this.isLoading = false;
           // this.orders.splice(this.tempIndex, 1);
           // console.log(this.orders);
-          $("#del ImageModal").modal("hide");
+          $("#delImageModal").modal("hide");
           this.refreshScreen();
         })
         .catch((error) => {
           this.isLoading = false;
+          $("#delImageModal").modal("hide");
           console.log(error);
           alert(error.response.data.message);
         });
