@@ -1,9 +1,9 @@
 <template>
-  <div class="home">
-    <!--Product title="abc" /-->
-    <div class="container">
+  <div class="content">
+    <div class="wrap">
+      <!--Product title="abc" /-->
       <Loading :active.sync="isLoading"></Loading>
-      <div class="h4"><strong>我的最愛</strong></div>
+      <div class="h3 mt-4"><strong>我的最愛</strong></div>
       <hr />
       <div class="row" v-if="tempProducts.length > 0">
         <div

@@ -28,7 +28,9 @@
             required
           />
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          登入
+        </button>
         <p class="mt-5 mb-3 text-muted">&copy; 2020~∞ - 六角學院</p>
       </form>
     </div>
@@ -40,10 +42,10 @@ export default {
   data() {
     return {
       user: {
-        email: '',
-        password: '',
+        email: "",
+        password: "",
       },
-      token: '',
+      token: "",
     };
   },
   methods: {
@@ -54,14 +56,12 @@ export default {
         .post(api, this.user)
         .then((response) => {
           const token = response.data.token;
-          const expired = response.data.expired;
+          const expired = new Date(response.data.expired * 1000);
           // 寫入 cookie token
           // expires 設置有效時間
-          document.cookie = `hexToken=${token};expires=${new Date(
-            expired * 1000
-          )}; path=/`;
-          //window.location = 'Products.html';
-          this.$router.push('/admin');
+          document.cookie = `hexToken=${token};expires=${expired}; path=/`;
+          // window.location = 'Products.html';
+          this.$router.push("/admin");
         })
         .catch((error) => {
           console.log(error);

@@ -1,50 +1,26 @@
 <template>
-  <div class="container">
-    <div v-if="false" class="my-3 p-3 bg-grey rounded box-shadow">
-      <h3 class="border-bottom border-gray pb-2 mb-0">
-        <img
-          src="@/assets/lens.png"
-          class="mr-2"
-          style="width: 50px; height: 50px"
-          alt=""
-        />
-        <span class="mr-2" style="color: Grey"
-          ><i class="fas fa-genderless"></i
-        ></span>
-        <span>漸進多焦點鏡片</span>
-      </h3>
-      <div class="media text-muted pt-3">
-        <img
-          data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1"
-          alt=""
-          class="mr-2 rounded"
-        />
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <strong class="d-block h4">多功能同時可看遠中近</strong>
-          <span class="h5"
-            >漸變焦距的鏡片, 可同時看遠中近, 減低不同情況 更換眼鏡的煩惱</span
-          >
-        </p>
-      </div>
-    </div>
+  <div class="content">
+    <div class="wrap">
+      <div class="h2 my-4"><strong>關於鏡片</strong></div>
 
-    <div v-for="(len, index) in lens" :key="index">
-      <div class="card mb-5 lens-card">
-        <div class="card-header h3">
-          <img
-            src="@/assets/lens-blue.png"
-            class="mr-2"
-            style="width: 60px; height: 60px"
-            alt=""
-          />{{ len.title }}
-        </div>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p>{{ len.title2 }}</p>
-            <footer class="blockquote-footer">
-              {{ len.content }}
-            </footer>
-          </blockquote>
+      <div v-for="(len, index) in lens" :key="index">
+        <div class="card mb-5 lens-card">
+          <div class="card-header h3">
+            <img
+              src="@/assets/lens-blue.png"
+              class="mr-2"
+              style="width: 60px; height: 60px"
+              alt=""
+            />{{ len.title }}
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>{{ len.title2 }}</p>
+              <footer class="blockquote-footer">
+                {{ len.content }}
+              </footer>
+            </blockquote>
+          </div>
         </div>
       </div>
     </div>

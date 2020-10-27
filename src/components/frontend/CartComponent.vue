@@ -10,25 +10,27 @@
     </div>
     <div class="col-7 col-md-8 col-lg-10">
       <div class="row">
-        <div class="col-12 col-md-4 col-lg-2">
+        <div class="col-12 col-md-4 col-lg-3 mt-2">
           <h5 class="card-text">{{ item.product.title }}</h5>
         </div>
-        <div class="col-12 col-md-8 col-lg-4">
+        <div class="col-12 col-md-8 col-lg-4 mt-2">
           <h5 class="card-text">{{ item.product.content }}</h5>
         </div>
 
-        <div class="col-12 col-md-4 col-lg-2">
+        <div class="col-12 col-md-4 col-lg-2 mt-2">
           <td class="align-middle">
             <div class="input-group" style="min-width: 150px">
-              <div class="input-group-prepend">
+              <div class="input-group-append">
                 <button
                   class="btn btn-outline-primary"
                   type="button"
-                  @click="quantityUpdata(item.product.id, item.quantity + 1)"
+                  @click="quantityUpdata(item.product.id, item.quantity - 1)"
+                  :disabled="item.quantity === 1"
                 >
-                  +
+                  -
                 </button>
               </div>
+
               <input
                 id="qty"
                 type="text"
@@ -40,24 +42,24 @@
                   quantityUpdata(item.product.id, $event.target.value)
                 "
               />
-              <div class="input-group-append">
+
+              <div class="input-group-prepend">
                 <button
                   class="btn btn-outline-primary"
                   type="button"
-                  @click="quantityUpdata(item.product.id, item.quantity - 1)"
-                  :disabled="item.quantity === 1"
+                  @click="quantityUpdata(item.product.id, item.quantity + 1)"
                 >
-                  -
+                  +
                 </button>
               </div>
-              <button @click="deleteCart(item)">
-                <i class="fas fa-trash-alt"></i>
+              <button class="shopping-cart-icon ml-2" @click="deleteCart(item)">
+                <i class="fas fa-trash fa-lg"></i>
               </button>
             </div>
           </td>
         </div>
 
-        <div class="col-12 col-md-8 col-lg-3 text-right">
+        <div class="col-12 col-md-8 col-lg-3 text-right mt-2">
           <h5 class="card-text">
             {{ item.quantity }} x ${{ item.product.price }}
           </h5>

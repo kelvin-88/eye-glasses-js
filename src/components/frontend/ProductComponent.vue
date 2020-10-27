@@ -2,8 +2,8 @@
   <div class="card shadow-sm link-image" @click="showProduct">
     <Loading :active.sync="isLoading"></Loading>
     <div v-if="product.title" class="row">
-      <div class="col-lg-7">
-        <img class="img-fluid" :src="product.imageUrl[0]" />
+      <div class="col-md-12 col-lg-7">
+        <img class="img-fluid rounded-image" :src="product.imageUrl[0]" />
         <div
           v-if="showShoppingCart"
           class="card-img-overlay d-flex justify-content-end"
@@ -22,44 +22,33 @@
           </a>
         </div>
       </div>
-      <div class="col-lg-5 mt-4">
+      <div class="col-md-12 col-lg-5 mt-4">
         <div class="d-flex flex-column h-100">
-          <div class="mx-2">
+          <div>
             <h3 class="card-title">{{ product.title }}</h3>
           </div>
-          <div
-            v-if="false && showShoppingCart"
-            class="col-lg-5 mt-2 align-items-end"
-          >
-            <a @click="addToCart" class="btn btn-danger btn-sm">
-              <i class="fas fa-heart"></i> 加入收藏夾
-            </a>
-          </div>
 
-          <p class="card-text text-muted mx-2">
+          <p class="card-text text-muted">
             <span class="h5"> {{ product.content }}</span>
           </p>
 
           <p class="card-subtitle h5 mt-2" v-html="product.description"></p>
-          <div class="mt-auto mx-2 mb-4">
+          <div class="mt-auto mb-4">
             <div class="row">
-              <div class="col-lg-7 mt-2">
-                <div class="row">
-                  <span class="ml-3 price mr-4"
-                    >${{ product.price | toThousandSeperator }}</span
-                  >
-                  <span class="original-price mt-1"
-                    >${{ product.origin_price | toThousandSeperator }}</span
-                  >
-                </div>
-              </div>
-              <div
-                v-if="showShoppingCart"
-                class="col-lg-5 mt-2 align-items-end"
-              >
-                <a @click="addToCart" class="btn btn-danger btn-lg">
+              <div v-if="showShoppingCart" class="col-md-12 col-lg-6 mt-2">
+                <a @click="addToCart" class="btn btn-lg product-addToCart">
                   <i class="fas fa-shopping-cart"></i> 加入購物車
                 </a>
+              </div>
+              <div class="col-md-12 col-lg-6 align-items-end mt-2">
+                <div class="row d-flex">
+                  <span class="ml-auto original-price mt-1"
+                    >${{ product.origin_price | toThousandSeperator }}</span
+                  >
+                  <span class="ml-3 price mr-5"
+                    >${{ product.price | toThousandSeperator }}</span
+                  >
+                </div>
               </div>
             </div>
           </div>
