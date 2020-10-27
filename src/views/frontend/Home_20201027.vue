@@ -1,13 +1,24 @@
 <template>
   <div class="container-fluid">
-    <div class="row home-banner">
+    <div class="container">
       <img
         src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/WCder4GWlxtPdJmEoUCx8ans8hH4kmRTpSNanchhN3pZKwIi1hFAgD0DzsleEgPg69vW7ybPKqNaB5AjzjZ9Bb2hXeFauHFkVLw8gPHmmyepGwqWJPZq9775gHscg9dZ.jpeg"
         alt="Notebook"
-        style="width: 100%; height: 40vh; object-fit: cover"
+        style="width: 100%"
       />
       <div class="content">
-        <div class="h2">春夏眼鏡系列<br />現已登場</div>
+        <h1>Heading</h1>
+        <p>Lorem ipsum..</p>
+      </div>
+    </div>
+    <div class="row">
+      <img
+        src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/WCder4GWlxtPdJmEoUCx8ans8hH4kmRTpSNanchhN3pZKwIi1hFAgD0DzsleEgPg69vW7ybPKqNaB5AjzjZ9Bb2hXeFauHFkVLw8gPHmmyepGwqWJPZq9775gHscg9dZ.jpeg"
+        alt=""
+        class="home-banner"
+      />
+      <div class="row featurette link-image" @click="showProducts">
+        <div class="home-banner-text h2">春夏眼鏡系列<br />現已登場</div>
       </div>
     </div>
 

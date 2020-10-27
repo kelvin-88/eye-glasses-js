@@ -10,14 +10,14 @@
     </div>
     <div class="col-7 col-md-8 col-lg-10">
       <div class="row">
-        <div class="col-12 col-md-4 col-lg-3">
+        <div class="col-12 col-md-4 col-lg-3 mt-2">
           <h5 class="card-text">{{ item.product.title }}</h5>
         </div>
-        <div class="col-12 col-md-8 col-lg-4">
+        <div class="col-12 col-md-8 col-lg-4 mt-2">
           <h5 class="card-text">{{ item.product.content }}</h5>
         </div>
 
-        <div class="col-12 col-md-4 col-lg-2">
+        <div class="col-12 col-md-4 col-lg-2 mt-2">
           <td class="align-middle">
             <div class="input-group" style="min-width: 150px">
               <div class="input-group-append">
@@ -59,7 +59,7 @@
           </td>
         </div>
 
-        <div class="col-12 col-md-8 col-lg-3 text-right">
+        <div class="col-12 col-md-8 col-lg-3 text-right mt-2">
           <h5 class="card-text">
             {{ item.quantity }} x ${{ item.product.price }}
           </h5>
